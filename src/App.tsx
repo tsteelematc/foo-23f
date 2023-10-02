@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -11,23 +11,28 @@ import { Home } from './Home';
 import { Setup } from './Setup';
 import { Play } from './Play';
 
-const router = createHashRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/setup",
-    element: <Setup />,
-  },
-  {
-    path: "/play",
-    element: <Play />,
-  },
-]);
-
-
 const App = () => {
+
+  const [num, setNum] = useState(1);
+
+  const router = createHashRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/setup",
+      element: <Setup 
+        num={num}
+        setNum={setNum}
+      />,
+    },
+    {
+      path: "/play",
+      element: <Play />,
+    },
+  ]);
+
   return (
     <div className="App">
       <RouterProvider router={router} />
