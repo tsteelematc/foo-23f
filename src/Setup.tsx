@@ -22,6 +22,11 @@ export const Setup: FC<SetupProps> = ({num, setNum}) => {
                 Setup a Game of Foo ({num})
             </h3>
             <Button
+                // sx={{ 
+                //     marginTop: 10
+                //     , boxShadow: 5
+                //     , width: 1 
+                // }}
                 variant="outlined"
                 size="large"
                 onClick={
