@@ -24,6 +24,7 @@ export const Setup = () => {
                         //num++;
                         setNum(num + 1);
                         console.log(num);
+                        navigate('/play');
                     }
                 }
             >
