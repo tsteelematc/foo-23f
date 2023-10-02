@@ -14,7 +14,6 @@ import { Play } from './Play';
 import { 
   GameResult
   , getWinningPercentageDisplay 
-  , addGameResult 
 } from './game-results';
 
 const dummyGameResults: GameResult[] = [
@@ -29,7 +28,10 @@ const App = () => {
   const [gameResults, setGameResults] = useState<GameResult[]>(dummyGameResults);
 
   const addNewGameResult = (newGameResult: GameResult) => setGameResults(
-    addGameResult(gameResults, newGameResult)
+    [
+      ...gameResults
+      , newGameResult
+    ]
   );
 
   const router = createHashRouter([

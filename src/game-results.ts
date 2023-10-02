@@ -1,10 +1,5 @@
 export type GameResult = boolean;
 
-export const addGameResult = (results: GameResult[], newResult: GameResult): GameResult[] => [
-    ...results 
-    , newResult
-];
-
 export type WinningPercentageDisplay = {
     totalGames: number;
     winningPercentage: string;
