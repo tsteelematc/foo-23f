@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -11,23 +11,46 @@ import { Home } from './Home';
 import { Setup } from './Setup';
 import { Play } from './Play';
 
-const router = createHashRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/setup",
-    element: <Setup />,
-  },
-  {
-    path: "/play",
-    element: <Play />,
-  },
-]);
+import { 
+  GameResult
+  , getWinningPercentageDisplay 
+  , addGameResult 
+} from './game-results';
 
+const dummyGameResults: GameResult[] = [
+  true
+  , false
+  , true
+  // , true
+];
 
 const App = () => {
+
+  const [gameResults, setGameResults] = useState<GameResult[]>(dummyGameResults);
+
+  const addNewGameResult = (newGameResult: GameResult) => setGameResults(
+    addGameResult(gameResults, newGameResult)
+  );
+
+  const router = createHashRouter([
+    {
+      path: "/",
+      element: <Home
+        wp={getWinningPercentageDisplay(gameResults)} 
+      />,
+    },
+    {
+      path: "/setup",
+      element: <Setup />,
+    },
+    {
+      path: "/play",
+      element: <Play 
+        addNewGameResult={addNewGameResult}
+      />,
+    },
+  ]);
+
   return (
     <div className="App">
       <RouterProvider router={router} />
