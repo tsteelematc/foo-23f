@@ -10,15 +10,33 @@ import {
 import { Home } from './Home';
 import { Setup } from './Setup';
 import { Play } from './Play';
+import { GameResult, getWinningPercentageDisplay } from './foo-game-results';
+
+const dummyGameResults: GameResult[] = [
+  true
+  , false
+  , true
+  , true
+];
 
 const App = () => {
 
   const [num, setNum] = useState(1);
+  const [gameResults, setGameResults] = useState<GameResult[]>(dummyGameResults);
+
+  const addNewGameResult = (newGameResult: GameResult) => setGameResults(
+    [
+      ...gameResults
+      , newGameResult
+    ]
+  );
 
   const router = createHashRouter([
     {
       path: "/",
-      element: <Home />,
+      element: <Home 
+        winningPercentageDisplay= {getWinningPercentageDisplay(gameResults)}
+      />,
     },
     {
       path: "/setup",
@@ -29,7 +47,9 @@ const App = () => {
     },
     {
       path: "/play",
-      element: <Play />,
+      element: <Play 
+        addNewGameResult={addNewGameResult}
+      />,
     },
   ]);
 
