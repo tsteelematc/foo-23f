@@ -1,8 +1,14 @@
 import Button from '@mui/material/Button';
 import SmartDisplay from '@mui/icons-material/SmartDisplay';
 import { useNavigate } from "react-router-dom";
+import { WinningPercentageDisplay } from './foo-game-results';
+import { FC } from 'react';
 
-export const Home = () => {
+interface HomeProps {
+    winningPercentageDisplay: WinningPercentageDisplay
+}
+
+export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
 
     const navigate = useNavigate();
 
@@ -23,6 +29,12 @@ export const Home = () => {
         >
             Play a Game of Foo
         </Button>
+        <h4>
+            {`Total: ${winningPercentageDisplay.totalGames}`}
+        </h4>
+        <h4>
+            {`Winning Percentage: ${winningPercentageDisplay.winningPercentage}`}
+        </h4>
         </>
     );
 };
