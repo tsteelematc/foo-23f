@@ -19,7 +19,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
     return (
         <>
         <Box
-            sx={{mt: 3, backgroundColor: 'inherit'}}
+            sx={{mt: 3, mb: 3, backgroundColor: 'inherit'}}
         >
             <Button
                 variant="contained"
@@ -36,7 +36,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                 Play a Game of Foo
             </Button>
         </Box>
-        <Card sx={{mt: 3, boxShadow: 5}}>
+        <Card sx={{mb: 3, boxShadow: 5}}>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     General
@@ -49,7 +49,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                 </h4>
             </CardContent>
         </Card>
-        <Card sx={{mt: 3, boxShadow: 5}}>
+        <Card sx={{mb: 3, boxShadow: 5}}>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     General
@@ -62,7 +62,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                 </h4>
             </CardContent>
         </Card>
-        <Card sx={{mt: 3, boxShadow: 5}}>
+        <Card sx={{mb: 3, boxShadow: 5}}>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     General
@@ -75,7 +75,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                 </h4>
             </CardContent>
         </Card>
-        <Card sx={{mt: 3, boxShadow: 5}}>
+        <Card sx={{mb: 3, boxShadow: 5}}>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     General
@@ -88,7 +88,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                 </h4>
             </CardContent>
         </Card>
-        <Card sx={{mt: 3, boxShadow: 5}}>
+        <Card sx={{mb: 3, boxShadow: 5}}>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     General
@@ -101,7 +101,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                 </h4>
             </CardContent>
         </Card>
-        <Card sx={{mt: 3, boxShadow: 5}}>
+        <Card sx={{mb: 3, boxShadow: 5}}>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     General
@@ -114,7 +114,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                 </h4>
             </CardContent>
         </Card>
-        <Card sx={{mt: 3, boxShadow: 5}}>
+        <Card sx={{mb: 3, boxShadow: 5}}>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     General
@@ -127,7 +127,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                 </h4>
             </CardContent>
         </Card>
-        <Card sx={{mt: 3, boxShadow: 5}}>
+        <Card sx={{mb: 3, boxShadow: 5}}>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     General
@@ -140,7 +140,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                 </h4>
             </CardContent>
         </Card>
-        <Card sx={{mt: 3, boxShadow: 5}}>
+        <Card sx={{mb: 3, boxShadow: 5}}>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     General
