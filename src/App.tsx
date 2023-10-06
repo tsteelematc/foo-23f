@@ -14,15 +14,33 @@ import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { GameResult, getWinningPercentageDisplay } from './foo-game-results';
+
+const dummyGameResults: GameResult[] = [
+  true
+  , false
+  , true
+  , true
+];
 
 const App = () => {
 
   const [num, setNum] = useState(1);
+  const [gameResults, setGameResults] = useState<GameResult[]>(dummyGameResults);
+
+  const addNewGameResult = (newGameResult: GameResult) => setGameResults(
+    [
+      ...gameResults
+      , newGameResult
+    ]
+  );
 
   const router = createHashRouter([
     {
       path: "/",
-      element: <Home />,
+      element: <Home 
+        winningPercentageDisplay = {getWinningPercentageDisplay(gameResults)}
+      />,
     },
     {
       path: "/setup",
@@ -33,7 +51,9 @@ const App = () => {
     },
     {
       path: "/play",
-      element: <Play />,
+      element: <Play 
+        addNewGameResult={addNewGameResult}
+      />,
     },
   ]);
 
