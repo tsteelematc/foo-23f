@@ -49,6 +49,111 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                 </h4>
             </CardContent>
         </Card>
+        <Card sx={{mt: 3, boxShadow: 5}}>
+            <CardContent>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                    General
+                </Typography>
+                <h4>
+                    {`Total Games: ${winningPercentageDisplay.totalGames}`}
+                </h4>
+                <h4>
+                    {`Winning Percentage: ${winningPercentageDisplay.winningPercentage}`}
+                </h4>
+            </CardContent>
+        </Card>
+        <Card sx={{mt: 3, boxShadow: 5}}>
+            <CardContent>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                    General
+                </Typography>
+                <h4>
+                    {`Total Games: ${winningPercentageDisplay.totalGames}`}
+                </h4>
+                <h4>
+                    {`Winning Percentage: ${winningPercentageDisplay.winningPercentage}`}
+                </h4>
+            </CardContent>
+        </Card>
+        <Card sx={{mt: 3, boxShadow: 5}}>
+            <CardContent>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                    General
+                </Typography>
+                <h4>
+                    {`Total Games: ${winningPercentageDisplay.totalGames}`}
+                </h4>
+                <h4>
+                    {`Winning Percentage: ${winningPercentageDisplay.winningPercentage}`}
+                </h4>
+            </CardContent>
+        </Card>
+        <Card sx={{mt: 3, boxShadow: 5}}>
+            <CardContent>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                    General
+                </Typography>
+                <h4>
+                    {`Total Games: ${winningPercentageDisplay.totalGames}`}
+                </h4>
+                <h4>
+                    {`Winning Percentage: ${winningPercentageDisplay.winningPercentage}`}
+                </h4>
+            </CardContent>
+        </Card>
+        <Card sx={{mt: 3, boxShadow: 5}}>
+            <CardContent>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                    General
+                </Typography>
+                <h4>
+                    {`Total Games: ${winningPercentageDisplay.totalGames}`}
+                </h4>
+                <h4>
+                    {`Winning Percentage: ${winningPercentageDisplay.winningPercentage}`}
+                </h4>
+            </CardContent>
+        </Card>
+        <Card sx={{mt: 3, boxShadow: 5}}>
+            <CardContent>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                    General
+                </Typography>
+                <h4>
+                    {`Total Games: ${winningPercentageDisplay.totalGames}`}
+                </h4>
+                <h4>
+                    {`Winning Percentage: ${winningPercentageDisplay.winningPercentage}`}
+                </h4>
+            </CardContent>
+        </Card>
+        <Card sx={{mt: 3, boxShadow: 5}}>
+            <CardContent>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                    General
+                </Typography>
+                <h4>
+                    {`Total Games: ${winningPercentageDisplay.totalGames}`}
+                </h4>
+                <h4>
+                    {`Winning Percentage: ${winningPercentageDisplay.winningPercentage}`}
+                </h4>
+            </CardContent>
+        </Card>
+        <Card sx={{mt: 3, boxShadow: 5}}>
+            <CardContent>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                    General
+                </Typography>
+                <h4>
+                    {`Total Games: ${winningPercentageDisplay.totalGames}`}
+                </h4>
+                <h4>
+                    {`Winning Percentage: ${winningPercentageDisplay.winningPercentage}`}
+                </h4>
+            </CardContent>
+        </Card>        
+        
         </>
     );
 };
