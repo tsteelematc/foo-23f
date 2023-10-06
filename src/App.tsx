@@ -16,6 +16,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { GameResult, getWinningPercentageDisplay } from './foo-game-results';
 
+import TableBarTwoTone from '@mui/icons-material/TableBarTwoTone';
+
 const dummyGameResults: GameResult[] = [
   true
   , false
@@ -62,6 +64,7 @@ const App = () => {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static" color="transparent">
           <Toolbar>
+            <TableBarTwoTone color="primary" sx={{mr: 1}} />
             <Typography variant="h6" color="primary" component="div" sx={{ flexGrow: 1, textAlign: "left" }}>
               Foo Companion App
             </Typography>
