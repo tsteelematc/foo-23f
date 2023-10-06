@@ -3,6 +3,10 @@ import SmartDisplay from '@mui/icons-material/SmartDisplay';
 import { useNavigate } from "react-router-dom";
 import { WinningPercentageDisplay } from './foo-game-results';
 import { FC } from 'react';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
+import CardContent from '@mui/material/CardContent';
 
 interface HomeProps {
     winningPercentageDisplay: WinningPercentageDisplay
@@ -14,27 +18,37 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
 
     return (
         <>
-        <h3>
-            Foo Companion App
-        </h3>
-        <Button
-            variant="outlined"
-            size="large"
-            startIcon={
-            <SmartDisplay />
-            }
-            onClick={
-                () => navigate('/setup')
-            }
+        <Box
+            sx={{mt: 3, backgroundColor: 'inherit'}}
         >
-            Play a Game of Foo
-        </Button>
-        <h4>
-            {`Total: ${winningPercentageDisplay.totalGames}`}
-        </h4>
-        <h4>
-            {`Winning Percentage: ${winningPercentageDisplay.winningPercentage}`}
-        </h4>
+            <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                startIcon={
+                <SmartDisplay />
+                }
+                onClick={
+                    () => navigate('/setup')
+                }
+                sx={{ width: '100%'}}
+            >
+                Play a Game of Foo
+            </Button>
+        </Box>
+        <Card sx={{mt: 3, boxShadow: 5}}>
+            <CardContent>
+                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                    General
+                </Typography>
+                <h4>
+                    {`Total Games: ${winningPercentageDisplay.totalGames}`}
+                </h4>
+                <h4>
+                    {`Winning Percentage: ${winningPercentageDisplay.winningPercentage}`}
+                </h4>
+            </CardContent>
+        </Card>
         </>
     );
 };
