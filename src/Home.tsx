@@ -314,45 +314,6 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                     </CardContent>
                 </Paper>
             </Grid>
-            <Grid xs={12} md={6}>
-                <Paper 
-                    elevation={3} 
-                    sx={{ overflow: "hidden"}}>
-                    <CardContent>
-                        <Typography sx={{ fontSize: 20 }} color="text.disabled" gutterBottom>
-                            GENERAL
-                        </Typography>
-                        <Table>
-                            <TableBody>
-                                <TableRow>
-                                    <TableCell>
-                                        <Typography sx={{ fontSize: 20}}>
-                                            Total Games
-                                        </Typography>
-                                    </TableCell>
-                                    <TableCell>
-                                        <Typography sx={{ fontSize: 20}}>
-                                            {winningPercentageDisplay.totalGames}
-                                        </Typography>
-                                    </TableCell>
-                                </TableRow>
-                                <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                    <TableCell>
-                                        <Typography sx={{ fontSize: 20}}>
-                                            Winning %
-                                        </Typography>
-                                    </TableCell>
-                                    <TableCell>
-                                        <Typography sx={{ fontSize: 20}}>
-                                            {winningPercentageDisplay.winningPercentage}
-                                        </Typography>
-                                    </TableCell>
-                                </TableRow>
-                            </TableBody>
-                        </Table>
-                    </CardContent>
-                </Paper>
-            </Grid>
         </Grid>
       </>
     );
