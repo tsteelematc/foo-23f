@@ -62,11 +62,16 @@ const App = () => {
   return (
     <div className="App">
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" color="transparent">
+        <AppBar 
+          position="static" 
+          color="transparent"
+        >
           <Toolbar>
-            <TableBarTwoTone color="primary" sx={{mr: 1}} />
-            <Typography variant="h6" color="primary" component="div" sx={{ flexGrow: 1, textAlign: "left" }}>
-              Foo Companion App
+            <TableBarTwoTone color="primary" sx={{mr: 1, fontSize: '2.5em'}} />
+            <Typography variant="h6" color="primary"  sx={{ flexGrow: 1, textAlign: "left" }}>
+              <b>
+                Foo Companion App
+              </b>
             </Typography>
           </Toolbar>
         </AppBar>

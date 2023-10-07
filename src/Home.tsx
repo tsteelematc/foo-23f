@@ -8,7 +8,7 @@ import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import Table from '@mui/material/Table';
-import { TableBody, TableCell, TableHead, TableRow } from '@mui/material';
+import { Paper, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 
 interface HomeProps {
     winningPercentageDisplay: WinningPercentageDisplay
@@ -33,12 +33,14 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                 onClick={
                     () => navigate('/setup')
                 }
-                sx={{ width: '100%'}}
+                sx={{ width: '100%', pt: 3, pb: 3}}
             >
-                Play a Game of Foo
+                <b>
+                    Play a Game of Foo
+                </b>
             </Button>
         </Box>
-        <Card sx={{mb: 3, boxShadow: 5}}>
+        <Paper elevation={3} sx={{mb: 3}}>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     General
@@ -47,24 +49,24 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                     <TableBody>
                         <TableRow>
                             <TableCell>
-                                <Typography sx={{ fontSize: 24}}>
+                                <Typography sx={{ fontSize: 20}}>
                                     Total Games
                                 </Typography>
                             </TableCell>
                             <TableCell>
-                                <Typography sx={{ fontSize: 24}}>
+                                <Typography sx={{ fontSize: 20}}>
                                     {winningPercentageDisplay.totalGames}
                                 </Typography>
                             </TableCell>
                         </TableRow>
                         <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                             <TableCell>
-                                <Typography sx={{ fontSize: 24}}>
+                                <Typography sx={{ fontSize: 20}}>
                                     Winning %
                                 </Typography>
                             </TableCell>
                             <TableCell>
-                                <Typography sx={{ fontSize: 24}}>
+                                <Typography sx={{ fontSize: 20}}>
                                     {winningPercentageDisplay.winningPercentage}
                                 </Typography>
                             </TableCell>
@@ -72,7 +74,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                     </TableBody>
                 </Table>
             </CardContent>
-        </Card>
+        </Paper>
         <Card sx={{mb: 3, boxShadow: 5}}>
             <CardContent>
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
