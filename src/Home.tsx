@@ -38,7 +38,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                 </Typography>
             </Button>
         </Box>
-        <Paper elevation={3} sx={{mb: 3}}>
+        <Paper elevation={3} sx={{mb: 3, overflow: "hidden"}}>
             <CardContent>
                 <Typography sx={{ fontSize: 20 }} color="text.disabled" gutterBottom>
                     GENERAL

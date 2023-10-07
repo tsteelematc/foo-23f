@@ -65,6 +65,7 @@ const App = () => {
         <AppBar 
           position="static" 
           color="transparent"
+          sx={{overflow: "hidden"}}
         >
           <Toolbar>
             <TableBarTwoTone sx={{mr: 2, fontSize: '2.5em', color: "darkgray" }} />
