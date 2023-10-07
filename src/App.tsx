@@ -67,11 +67,9 @@ const App = () => {
           color="transparent"
         >
           <Toolbar>
-            <TableBarTwoTone sx={{mr: 2, fontSize: '2.5em', color: "gray" }} />
+            <TableBarTwoTone sx={{mr: 2, fontSize: '2.5em', color: "lightgray" }} />
             <Typography variant="h6" sx={{ color: "gray", flexGrow: 1, textAlign: "left" }}>
-              <b>
                 Foo Companion App
-              </b>
             </Typography>
           </Toolbar>
         </AppBar>

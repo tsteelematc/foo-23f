@@ -40,19 +40,19 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
         </Box>
         <Paper elevation={3} sx={{mb: 3}}>
             <CardContent>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                    General
+                <Typography sx={{ fontSize: 20 }} color="text.disabled" gutterBottom>
+                    GENERAL
                 </Typography>
                 <Table>
                     <TableBody>
                         <TableRow>
                             <TableCell>
-                                <Typography sx={{ fontSize: 20}}>
+                                <Typography sx={{ fontSize: 18}}>
                                     Total Games
                                 </Typography>
                             </TableCell>
                             <TableCell>
-                                <Typography sx={{ fontSize: 20}}>
+                                <Typography sx={{ fontSize: 18}}>
                                     {winningPercentageDisplay.totalGames}
                                 </Typography>
                             </TableCell>
