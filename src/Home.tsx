@@ -47,12 +47,12 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                     <TableBody>
                         <TableRow>
                             <TableCell>
-                                <Typography sx={{ fontSize: 18}}>
+                                <Typography sx={{ fontSize: 20}}>
                                     Total Games
                                 </Typography>
                             </TableCell>
                             <TableCell>
-                                <Typography sx={{ fontSize: 18}}>
+                                <Typography sx={{ fontSize: 20}}>
                                     {winningPercentageDisplay.totalGames}
                                 </Typography>
                             </TableCell>
