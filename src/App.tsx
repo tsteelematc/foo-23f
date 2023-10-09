@@ -11,6 +11,8 @@ import { Home } from './Home';
 import { Setup } from './Setup';
 import { Play } from './Play';
 import { GameResult, getWinningPercentageDisplay } from './foo-game-results';
+import { AppBar, Box, Toolbar, Typography } from '@mui/material';
+import TableBarOutlined from '@mui/icons-material/TableBarOutlined';
 
 const dummyGameResults: GameResult[] = [
   true
@@ -55,7 +57,49 @@ const App = () => {
 
   return (
     <div className="App">
-      <RouterProvider router={router} />
+      <Box
+        sx={{
+          flexGrow: 1
+        }}
+      >
+        <AppBar
+          position="static"
+          sx={{
+            overflow: 'hidden'
+            , bgcolor: 'gainsboro'
+          }}
+        >
+          <Toolbar>
+            <TableBarOutlined 
+              color={"primary"}
+              sx={{
+                mr: 1
+                , fontSize: '1.5em'
+                , opacity: 0.75
+              }}
+            />
+            <Typography
+              variant='h6'
+              // color={Math.random() > 0.5 ? 'primary' : 'secondary'}
+              color="primary"
+              sx={{
+                opacity: 0.75 
+              }}
+            >
+              Foo Companion App
+            </Typography>
+          </Toolbar>
+        </AppBar>
+      </Box>
+      <Box
+        sx={{
+          pl: 3
+          , pr: 3
+          , textAlign: 'left'
+        }}
+      >
+        <RouterProvider router={router} />
+      </Box>
     </div>
   );
 };
