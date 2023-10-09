@@ -21,7 +21,7 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
     return (
         <>
         <Box
-            sx={{mt: 3, mb: 3, backgroundColor: 'inherit', display: 'flex', flexDirection: 'row'}}
+            sx={{mt: 3, mb: 3 }}
         >
             <Button
                 variant="contained"
