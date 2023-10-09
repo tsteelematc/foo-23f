@@ -64,12 +64,15 @@ const App = () => {
       <Box sx={{ flexGrow: 1 }}>
         <AppBar 
           position="static" 
-          color="transparent"
-          sx={{overflow: "hidden"}}
+          // color="transparent"
+          sx={{
+            overflow: "hidden"
+            , bgcolor: "gainsboro"
+          }}
         >
           <Toolbar>
-            <TableBarOutlined sx={{mr: 1, fontSize: '1.5em', color: "darkgray" }} />
-            <Typography variant="h6" sx={{ color: "gray", flexGrow: 1, textAlign: "left" }}>
+            <TableBarOutlined color='primary' sx={{mr: 1, fontSize: '1.5em', opacity: 0.75 }} />
+            <Typography variant="h6" color='primary' sx={{ flexGrow: 1, textAlign: "left", opacity: 0.75 }}>
                 Foo Companion App
             </Typography>
           </Toolbar>
