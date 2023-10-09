@@ -66,7 +66,7 @@ const App = () => {
           position="static"
           sx={{
             overflow: 'hidden'
-            , bgcolor: 'gainsboro'
+            , bgcolor: 'whitesmoke'
           }}
         >
           <Toolbar>
