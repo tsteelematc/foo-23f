@@ -57,8 +57,8 @@ const getGeneralGameTimeFacts = (
     ;
 
     return {
-        lastPlayed: justDaysFormat(fromDateMilliseconds - Math.max(...gameEndDatesInMilliseconds))
-        , shortestGame: format(Math.min(...gameDurationsInMilliseconds))
-        , longestGame: format(Math.max(...gameDurationsInMilliseconds))
+        lastPlayed: justDaysFormat(fromDateMilliseconds - Math.max(...gameEndDatesInMilliseconds)) as string
+        , shortestGame: format(Math.min(...gameDurationsInMilliseconds)) as string
+        , longestGame: format(Math.max(...gameDurationsInMilliseconds)) as string
     };
 };
