@@ -79,7 +79,7 @@ const App = () => {
             <Typography
               variant='h6'
               // color={Math.random() > 0.5 ? 'primary' : 'secondary'}
-              color='primary'
+              color='whitesmoke'
               sx={{
                 opacity: 0.75 
               }}

@@ -64,9 +64,127 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                         }}
                     >
                     </Typography>
-                    <Table>
+                    <Table
+                            sx={{
+                                mt: 0
+                            }}
+                        >
+                            <TableBody>
+                                <TableRow>
+                                    <TableCell>
+                                        <Typography
+                                            fontSize={20}
+                                        >
+                                            Total Games
+                                        </Typography>
+                                    </TableCell>
+                                    <TableCell>
+                                        <Typography
+                                            fontSize={20}
+                                        >
+                                            {winningPercentageDisplay.totalGames}
+                                        </Typography>
+                                    </TableCell>
+                                </TableRow>
+                                <TableRow
+                                    sx={{
+                                        '&:last-child td, &:last-child th': {
+                                            border: 0,
+                                        }
+                                    }}
+                                >
+                                    <TableCell>
+                                        <Typography
+                                            fontSize={20}
+                                        >
+                                            Winning %
+                                        </Typography>
+                                    </TableCell>
+                                    <TableCell>
+                                        <Typography
+                                            fontSize={20}
+                                        >
+                                            {winningPercentageDisplay.winningPercentage}
+                                        </Typography>
+                                    </TableCell>
+                                </TableRow>                        
+                                <TableRow
+                                    sx={{
+                                        '&:last-child td, &:last-child th': {
+                                            border: 0,
+                                        }
+                                    }}
+                                >
+                                    <TableCell>
+                                        <Typography
+                                            fontSize={20}
+                                        >
+                                            Last Played
+                                        </Typography>
+                                    </TableCell>
+                                    <TableCell>
+                                        <Typography
+                                            fontSize={20}
+                                        >
+                                            3d ago
+                                        </Typography>
+                                    </TableCell>
+                                </TableRow> 
+                                <TableRow
+                                    sx={{
+                                        '&:last-child td, &:last-child th': {
+                                            border: 0,
+                                        }
+                                    }}
+                                >
+                                    <TableCell>
+                                        <Typography
+                                            fontSize={20}
+                                        >
+                                            Shortest Game
+                                        </Typography>
+                                    </TableCell>
+                                    <TableCell>
+                                        <Typography
+                                            fontSize={20}
+                                        >
+                                            5m 42s
+                                        </Typography>
+                                    </TableCell>
+                                </TableRow> 
+                                <TableRow
+                                    sx={{
+                                        '&:last-child td, &:last-child th': {
+                                            border: 0,
+                                        }
+                                    }}
+                                >
+                                    <TableCell>
+                                        <Typography
+                                            fontSize={20}
+                                        >
+                                            Longest Game
+                                        </Typography>
+                                    </TableCell>
+                                    <TableCell>
+                                        <Typography
+                                            fontSize={20}
+                                        >
+                                            13m 17s
+                                        </Typography>
+                                    </TableCell>
+                                </TableRow> 
+                            </TableBody>
+                        </Table>
+                    {/* <Table>
                         <TableBody>
-                            <TableRow>
+                            <TableRow
+                                sx={{
+                                    '&:last-child td, &:last-child th': {
+                                        border: 0,
+                                    }
+                                }}
+                            >
                                 <TableCell>
                                     <Typography
                                         fontSize={20}
@@ -96,8 +214,85 @@ export const Home: FC<HomeProps> = ({winningPercentageDisplay}) => {
                                     </Typography>
                                 </TableCell>
                             </TableRow>
+                            <TableRow 
+                            sx={{
+                                '&:last-child td, &:last-child th': {
+                                    border: 0,
+                                }
+                            }}>
+                                <TableCell>
+                                    <Typography
+                                        fontSize={20}
+                                    >
+                                        Total Games
+                                    </Typography>
+                                </TableCell>
+                                <TableCell>
+                                    <Typography
+                                        fontSize={20}
+                                    >
+                                    {winningPercentageDisplay.totalGames}
+                                    </Typography>
+                                </TableCell>
+                                <TableCell>
+                                    <Typography
+                                        fontSize={20}
+                                    >
+                                        Winning Percentage
+                                    </Typography>
+                                </TableCell>
+                                <TableCell>
+                                    <Typography
+                                        fontSize={20}
+                                    >
+                                        {winningPercentageDisplay.winningPercentage}
+                                    </Typography>
+                                </TableCell>
+                            </TableRow>
+                            <TableRow 
+                                sx={{
+                                    '&:last-child td, &:last-child th': {
+                                        border: 0,
+                                    }
+                                }}>
+                                <TableCell>
+                                    <Typography
+                                        fontSize={20}
+                                    >
+                                        Last Played
+                                    </Typography>
+                                </TableCell>
+                                <TableCell>
+                                    <Typography
+                                        fontSize={20}
+                                    >
+                                        3d ago
+                                    </Typography>
+                                </TableCell>
+                            </TableRow>
+                                <TableCell>
+                                    <Typography
+                                        fontSize={20}
+                                    >
+                                        Winning Percentage
+                                    </Typography>
+                                </TableCell>
+                            <TableRow>
+                                <TableCell>
+                                    <Typography
+                                        fontSize={20}
+                                    >
+                                        {winningPercentageDisplay.winningPercentage}
+                                    </Typography>
+                                </TableCell>
+                            </TableRow>
+
+
+
+
+
                         </TableBody>
-                    </Table>
+                    </Table> */}
 
                 </Paper>
             </Grid>
