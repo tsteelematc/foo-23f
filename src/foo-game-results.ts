@@ -41,7 +41,7 @@ export interface GeneralGameTimeFactsDisplay {
     longestGame: string;
 };
 
-const getGeneralGameTimeFacts = (
+export const getGeneralGameTimeFacts = (
     results: GameResult[]
     , fromDateMilliseconds: number 
 ): GeneralGameTimeFactsDisplay => {
