@@ -1,4 +1,8 @@
-export type GameResult = boolean;
+export type GameResult = {
+    won: boolean;
+    start: string;
+    end: string;
+};
 
 export interface WinningPercentageDisplay {
     totalGames: number;
@@ -7,7 +11,7 @@ export interface WinningPercentageDisplay {
 
 export const getWinningPercentageDisplay = (results: GameResult[]): WinningPercentageDisplay => {
 
-    const wins = results.filter(x => x).length;
+    const wins = results.filter(x => x.won).length;
     const totalGames = results.length;
     const wp = totalGames > 0
         ? (wins / totalGames) * 100
