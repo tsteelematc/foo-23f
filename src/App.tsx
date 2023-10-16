@@ -45,6 +45,8 @@ const App = () => {
     ]
   );
 
+  const [start, setStart]= useState<string>("");
+
   const router = createHashRouter([
     {
       path: "/",
@@ -58,12 +60,14 @@ const App = () => {
       element: <Setup 
         num={num}
         setNum={setNum}
+        setStartTimestamp={setStart}
       />,
     },
     {
       path: "/play",
       element: <Play 
         addNewGameResult={addNewGameResult}
+        startTimestamp={start}
       />,
     },
   ]);

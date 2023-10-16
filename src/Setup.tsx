@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 interface SetupProps {
     num: number;
     setNum: any;
+    setStartTimestamp: (ts: string) => void;
 };
 
-export const Setup: FC<SetupProps> = ({num, setNum}) => {
+export const Setup: FC<SetupProps> = ({num, setNum, setStartTimestamp}) => {
 
     console.log("Setup called ! ! !");
 
@@ -31,6 +32,7 @@ export const Setup: FC<SetupProps> = ({num, setNum}) => {
                         // console.log(num);
                         
                         setNum(num + 1);
+                        setStartTimestamp(new Date().toISOString());
                         navigate('/play');
                     }
                 }

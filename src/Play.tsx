@@ -2,20 +2,25 @@ import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
 import { GameResult } from './foo-game-results';
 import { FC } from 'react';
+import { start } from 'repl';
 
 interface PlayProps {
     addNewGameResult: (r: GameResult) => void;
+    startTimestamp: string;
 };
 
-export const Play: FC<PlayProps> = ({addNewGameResult}) => {
+export const Play: FC<PlayProps> = ({
+    addNewGameResult
+    , startTimestamp
+}) => {
 
     const nav = useNavigate();
 
     const gameOver = (won: boolean) => {
         addNewGameResult({
             won: won
-            , start: ""
-            , end: ""
+            , start: startTimestamp
+            , end: new Date().toISOString()
         });
         nav(-2);
     };
