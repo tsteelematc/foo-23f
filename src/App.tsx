@@ -10,7 +10,11 @@ import {
 import { Home } from './Home';
 import { Setup } from './Setup';
 import { Play } from './Play';
-import { GameResult, getWinningPercentageDisplay } from './foo-game-results';
+import { 
+  GameResult
+  , getWinningPercentageDisplay
+  , getGeneralGameTimeFacts
+} from './foo-game-results';
 import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 import TableBarOutlined from '@mui/icons-material/TableBarOutlined'
 
@@ -44,6 +48,7 @@ const App = () => {
       path: "/",
       element: <Home 
         winningPercentageDisplay= {getWinningPercentageDisplay(gameResults)}
+        generalGameTimeFacts={getGeneralGameTimeFacts(gameResults, Date.now())}
       />,
     },
     {

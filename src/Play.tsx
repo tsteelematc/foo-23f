@@ -1,5 +1,6 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
 import { GameResult } from './foo-game-results';
 import { FC } from 'react';
 
@@ -11,11 +12,17 @@ export const Play: FC<PlayProps> = ({addNewGameResult}) => {
 
     const nav = useNavigate();
 
+    const [startTimestamp, _] = useState(new Date().toISOString());
+
+    // _("")
+
+    // Could only destructure first item, but I like underscore convention to mean unused
+
     const gameOver = (won: boolean) => {
         addNewGameResult({
             won: won
-            , start: ""
-            , end: ""
+            , start: startTimestamp
+            , end: new Date().toISOString()
         });
         nav(-2);
     }
