@@ -1,3 +1,4 @@
+import Grid from '@mui/material/Unstable_Grid2';
 import Button from '@mui/material/Button';
 import { FC, useState } from 'react';
 import { useNavigate } from "react-router-dom";
@@ -7,7 +8,7 @@ interface SetupProps {
     setNum: any;
 };
 
-export const Setup: FC<SetupProps> = ({num, setNum}) => {
+export const Setup: FC<SetupProps> = ({ num, setNum }) => {
 
     console.log("Setup called ! ! !");
 
@@ -17,8 +18,109 @@ export const Setup: FC<SetupProps> = ({num, setNum}) => {
     // const [num, setNum] = useState(1);
 
     return (
-        <>
-            <h3>
+        <Grid
+            container
+            spacing={2}
+            sx={{ mt: 2 }}
+        >
+            <Grid xs={12}>
+                Foo
+            </Grid>
+            <Grid
+                xs={12}
+                sm={6}
+                md={4}
+                lg={2}
+            >
+                Bar
+            </Grid>
+            <Grid
+                xs={12}
+                sm={6}
+                md={4}
+                lg={2}
+            >
+                Bar
+            </Grid>            <Grid
+                xs={12}
+                sm={6}
+                md={4}
+                lg={2}
+            >
+                Bar
+            </Grid>            <Grid
+                xs={12}
+                sm={6}
+                md={4}
+                lg={2}
+            >
+                Bar
+            </Grid>            <Grid
+                xs={12}
+                sm={6}
+                md={4}
+                lg={2}
+            >
+                Bar
+            </Grid>            <Grid
+                xs={12}
+                sm={6}
+                md={4}
+                lg={2}
+            >
+                Bar
+            </Grid>            <Grid
+                xs={12}
+                sm={6}
+                md={4}
+                lg={2}
+            >
+                Bar
+            </Grid>            <Grid
+                xs={12}
+                sm={6}
+                md={4}
+                lg={2}
+            >
+                Bar
+            </Grid>            <Grid
+                xs={12}
+                sm={6}
+                md={4}
+                lg={2}
+            >
+                Bar
+            </Grid>            <Grid
+                xs={12}
+                sm={6}
+                md={4}
+                lg={2}
+            >
+                Bar
+            </Grid>            <Grid
+                xs={12}
+                sm={6}
+                md={4}
+                lg={2}
+            >
+                Bar
+            </Grid>            <Grid
+                xs={12}
+                sm={6}
+                md={4}
+                lg={2}
+            >
+                Bar
+            </Grid>            <Grid
+                xs={12}
+                sm={6}
+                md={4}
+                lg={2}
+            >
+                Bar
+            </Grid>
+
+            {/* <h3>
                 Setup a Game of Foo ({num})
             </h3>
             <Button
@@ -36,7 +138,7 @@ export const Setup: FC<SetupProps> = ({num, setNum}) => {
                 }
             >
                 Start the Game
-            </Button>
-        </>
+            </Button> */}
+        </Grid>
     );
 };
