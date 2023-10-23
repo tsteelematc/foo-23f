@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
 import { GameResult } from './foo-game-results';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 
 interface PlayProps {
@@ -14,7 +14,10 @@ export const Play: FC<PlayProps> = ({
     , setTitle
 }) => {
 
-    setTitle("Play Foo & Collect Data");
+    useEffect(
+        () => setTitle("Play Foo & Collect Data")
+        , []
+    );
 
     const nav = useNavigate();
 

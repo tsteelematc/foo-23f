@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import Button from '@mui/material/Button';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 
 interface SetupProps {
@@ -15,7 +15,10 @@ export const Setup: FC<SetupProps> = ({
     , setTitle
 }) => {
 
-    setTitle("Game Setup");
+    useEffect(
+        () => setTitle("Game Setup")
+        , []
+    );
 
     console.log("Setup called ! ! !");
 

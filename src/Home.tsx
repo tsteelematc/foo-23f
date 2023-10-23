@@ -4,6 +4,7 @@ import { GeneralGameTimeFactsDisplay, WinningPercentageDisplay } from './foo-gam
 import { FC } from 'react';
 import { Typography, Paper, Table, TableBody, TableRow, TableCell, Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
+import { useEffect } from 'react';
 
 export const appTitle = "Foo Companion App";
 interface HomeProps {
@@ -18,7 +19,10 @@ export const Home: FC<HomeProps> = ({
     , setTitle
 }) => {
 
-    setTitle(appTitle);
+    useEffect(
+        () => setTitle(appTitle)
+        , []
+    );
 
     const navigate = useNavigate();
 
