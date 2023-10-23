@@ -5,15 +5,20 @@ import { FC } from 'react';
 import { Typography, Paper, Table, TableBody, TableRow, TableCell, Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 
+export const appTitle = "Foo Companion App";
 interface HomeProps {
-    winningPercentageDisplay: WinningPercentageDisplay
-    , generalGameTimeFacts: GeneralGameTimeFactsDisplay
+    winningPercentageDisplay: WinningPercentageDisplay;
+    generalGameTimeFacts: GeneralGameTimeFactsDisplay;
+    setTitle: (t: string) => void;
 }
 
 export const Home: FC<HomeProps> = ({
     winningPercentageDisplay
     , generalGameTimeFacts
+    , setTitle
 }) => {
+
+    setTitle(appTitle);
 
     const navigate = useNavigate();
 
