@@ -15,7 +15,7 @@ export const Play: FC<PlayProps> = ({
 }) => {
 
     useEffect(
-        () => setTitle("Play Foo & Collect Data")
+        () => setTitle("Play Foo & Collect Data...")
         , []
     );
 

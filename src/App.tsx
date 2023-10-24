@@ -107,6 +107,7 @@ const App = () => {
               variant='h6'
               // color={Math.random() > 0.5 ? 'primary' : 'secondary'}
               color="primary"
+              noWrap
               sx={{
                 opacity: 0.75 
               }}
