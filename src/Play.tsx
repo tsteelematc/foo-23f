@@ -1,13 +1,23 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
 import { GameResult } from './foo-game-results';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
+import { Box } from '@mui/material';
 
 interface PlayProps {
     addNewGameResult: (r: GameResult) => void;
+    setTitle: (t: string) => void;
 };
 
-export const Play: FC<PlayProps> = ({addNewGameResult}) => {
+export const Play: FC<PlayProps> = ({
+    addNewGameResult
+    , setTitle
+}) => {
+
+    useEffect(
+        () => setTitle("Play Foo & Collect Data")
+        , []
+    );
 
     const nav = useNavigate();
 
@@ -29,28 +39,27 @@ export const Play: FC<PlayProps> = ({addNewGameResult}) => {
     };
 
     return (
-        <>
-        <h3>
-            Play &amp; Collect Data
-        </h3>
-        <Button
-            variant="outlined"
-            size="large"
-            onClick={
-                () => gameOver(true)
-            }
+        <Box
+            sx={{ mt: 2 }}
         >
-            I Won
-        </Button>
-        <Button
-            variant="outlined"
-            size="large"
-            onClick={
-                () => gameOver(false)
-            }
-        >
-            I Lost
-        </Button>
-        </>
+            <Button
+                variant="outlined"
+                size="large"
+                onClick={
+                    () => gameOver(true)
+                }
+            >
+                I Won
+            </Button>
+            <Button
+                variant="outlined"
+                size="large"
+                onClick={
+                    () => gameOver(false)
+                }
+            >
+                I Lost
+            </Button>
+        </Box>
     );
 };
