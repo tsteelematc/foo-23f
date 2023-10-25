@@ -17,8 +17,7 @@ import { Play } from './Play';
 
 import { 
   GameResult
-  , getWinningPercentageDisplay 
-  , getGeneralGameTimeFacts
+  , getGeneralFacts
 } from './foo-game-results';
 
 import { AppBar, Box, Toolbar, Typography } from '@mui/material';
@@ -54,8 +53,7 @@ const App = () => {
     {
       path: "/",
       element: <Home 
-        winningPercentageDisplay = {getWinningPercentageDisplay(gameResults)}
-        generalGameTimeFacts={ getGeneralGameTimeFacts(gameResults, Date.now())}
+        generalFacts={ getGeneralFacts(gameResults, Date.now())}
         setTitle={setTitle}
       />,
     },
