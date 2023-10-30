@@ -12,17 +12,17 @@ export type GameResult = {
     end: string;
 };
 
-export interface GeneralGameTimeFactsDisplay {
+export interface GeneralFactsDisplay {
     totalGames: number;
     lastPlayed: string; 
     shortestGame: string;
     longestGame: string;
 };
 
-export const getGeneralGameTimeFacts = (
+export const getGeneralFacts = (
     results: GameResult[]
     , fromDateMilliseconds: number 
-): GeneralGameTimeFactsDisplay => {
+): GeneralFactsDisplay => {
 
     const gameEndDatesInMilliseconds = results
         .map(x => Date.parse(x.end))

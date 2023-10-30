@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
-import { GeneralGameTimeFactsDisplay } from './foo-game-results';
+import { GeneralFactsDisplay } from './foo-game-results';
 import { FC } from 'react';
 import { Typography, Paper, Table, TableBody, TableRow, TableCell, Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
@@ -8,12 +8,12 @@ import { useEffect } from 'react';
 
 export const appTitle = "Foo Companion App";
 interface HomeProps {
-    generalGameTimeFacts: GeneralGameTimeFactsDisplay;
+    generalFacts: GeneralFactsDisplay;
     setTitle: (t: string) => void;
 }
 
 export const Home: FC<HomeProps> = ({
-    generalGameTimeFacts
+    generalFacts
     , setTitle
 }) => {
 
@@ -97,7 +97,7 @@ export const Home: FC<HomeProps> = ({
                                         <Typography
                                             fontSize={20}
                                         >
-                                            {generalGameTimeFacts.totalGames}
+                                            {generalFacts.totalGames}
                                         </Typography>
                                     </TableCell>
                                 </TableRow>                     
@@ -119,7 +119,7 @@ export const Home: FC<HomeProps> = ({
                                         <Typography
                                             fontSize={20}
                                         >
-                                            {generalGameTimeFacts.lastPlayed} ago
+                                            {generalFacts.lastPlayed} ago
                                         </Typography>
                                     </TableCell>
                                 </TableRow> 
@@ -141,7 +141,7 @@ export const Home: FC<HomeProps> = ({
                                         <Typography
                                             fontSize={20}
                                         >
-                                            {generalGameTimeFacts.shortestGame}
+                                            {generalFacts.shortestGame}
                                         </Typography>
                                     </TableCell>
                                 </TableRow> 
@@ -163,7 +163,7 @@ export const Home: FC<HomeProps> = ({
                                         <Typography
                                             fontSize={20}
                                         >
-                                            {generalGameTimeFacts.longestGame}
+                                            {generalFacts.longestGame}
                                         </Typography>
                                     </TableCell>
                                 </TableRow> 

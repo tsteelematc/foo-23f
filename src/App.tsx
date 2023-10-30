@@ -17,7 +17,7 @@ import { Play } from './Play';
 
 import { 
   GameResult
-  , getGeneralGameTimeFacts
+  , getGeneralFacts
 } from './foo-game-results';
 
 import { AppBar, Box, Toolbar, Typography } from '@mui/material';
@@ -53,7 +53,7 @@ const App = () => {
     {
       path: "/",
       element: <Home 
-        generalGameTimeFacts={ getGeneralGameTimeFacts(gameResults, Date.now())}
+        generalFacts={ getGeneralFacts(gameResults, Date.now())}
         setTitle={setTitle}
       />,
     },
