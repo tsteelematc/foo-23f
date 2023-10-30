@@ -17,7 +17,6 @@ import { Play } from './Play';
 
 import { 
   GameResult
-  , getWinningPercentageDisplay 
   , getGeneralGameTimeFacts
 } from './foo-game-results';
 
@@ -54,7 +53,6 @@ const App = () => {
     {
       path: "/",
       element: <Home 
-        winningPercentageDisplay = {getWinningPercentageDisplay(gameResults)}
         generalGameTimeFacts={ getGeneralGameTimeFacts(gameResults, Date.now())}
         setTitle={setTitle}
       />,

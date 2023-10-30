@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
-import { GeneralGameTimeFactsDisplay, WinningPercentageDisplay } from './foo-game-results';
+import { GeneralGameTimeFactsDisplay } from './foo-game-results';
 import { FC } from 'react';
 import { Typography, Paper, Table, TableBody, TableRow, TableCell, Box } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
@@ -8,14 +8,12 @@ import { useEffect } from 'react';
 
 export const appTitle = "Foo Companion App";
 interface HomeProps {
-    winningPercentageDisplay: WinningPercentageDisplay;
     generalGameTimeFacts: GeneralGameTimeFactsDisplay;
     setTitle: (t: string) => void;
 }
 
 export const Home: FC<HomeProps> = ({
-    winningPercentageDisplay
-    , generalGameTimeFacts
+    generalGameTimeFacts
     , setTitle
 }) => {
 
@@ -99,32 +97,10 @@ export const Home: FC<HomeProps> = ({
                                         <Typography
                                             fontSize={20}
                                         >
-                                            {winningPercentageDisplay.totalGames}
+                                            {generalGameTimeFacts.totalGames}
                                         </Typography>
                                     </TableCell>
-                                </TableRow>
-                                <TableRow
-                                    sx={{
-                                        '&:last-child td, &:last-child th': {
-                                            border: 0,
-                                        }
-                                    }}
-                                >
-                                    <TableCell>
-                                        <Typography
-                                            fontSize={20}
-                                        >
-                                            Winning %
-                                        </Typography>
-                                    </TableCell>
-                                    <TableCell>
-                                        <Typography
-                                            fontSize={20}
-                                        >
-                                            {winningPercentageDisplay.winningPercentage}
-                                        </Typography>
-                                    </TableCell>
-                                </TableRow>                        
+                                </TableRow>                     
                                 <TableRow
                                     sx={{
                                         '&:last-child td, &:last-child th': {
