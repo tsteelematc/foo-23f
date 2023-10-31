@@ -224,7 +224,13 @@ export const Home: FC<HomeProps> = ({
                                 </TableHead>
                                 <TableBody>
                                     {leaderboard.map(x => (
-                                        <TableRow>
+                                        <TableRow
+                                            sx={{
+                                                '&:last-child td, &:last-child th': {
+                                                    border: 0,
+                                                }
+                                            }}                                        
+                                        >
                                             <TableCell>
                                                 {x.wins}
                                             </TableCell>
