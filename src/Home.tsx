@@ -224,6 +224,7 @@ export const Home: FC<HomeProps> = ({
                                 <TableBody>
                                     {leaderboard.map(x => (
                                         <TableRow
+                                            key={x.name}
                                             sx={{
                                                 '&:last-child td, &:last-child th': {
                                                     border: 0,
