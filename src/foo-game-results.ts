@@ -23,7 +23,7 @@ export interface GeneralFactsDisplay {
     longestGame: string;
 };
 
-interface LeaderboardEntry {
+export interface LeaderboardEntry {
     wins: number;
     losses: number;
     avg: number;

@@ -18,6 +18,7 @@ import { Play } from './Play';
 import { 
   GameResult
   , getGeneralFacts
+  , getLeaderboardData
 } from './foo-game-results';
 
 import { AppBar, Box, Toolbar, Typography } from '@mui/material';
@@ -75,6 +76,7 @@ const App = () => {
       path: "/",
       element: <Home 
         generalFacts={ getGeneralFacts(gameResults, Date.now())}
+        leaderboard={ getLeaderboardData(gameResults) }
         setTitle={setTitle}
       />,
     },

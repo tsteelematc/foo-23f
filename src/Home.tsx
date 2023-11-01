@@ -1,19 +1,22 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
-import { GeneralFactsDisplay } from './foo-game-results';
+import { GeneralFactsDisplay, LeaderboardEntry } from './foo-game-results';
 import { FC } from 'react';
-import { Typography, Paper, Table, TableBody, TableRow, TableCell, Box } from '@mui/material';
+import { Typography, Paper, Table, TableBody, TableRow, TableCell, Box, TableHead } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import { useEffect } from 'react';
 
 export const appTitle = "Foo Companion App";
+
 interface HomeProps {
     generalFacts: GeneralFactsDisplay;
+    leaderboard: LeaderboardEntry[];
     setTitle: (t: string) => void;
 }
 
 export const Home: FC<HomeProps> = ({
     generalFacts
+    , leaderboard
     , setTitle
 }) => {
 
@@ -167,6 +170,61 @@ export const Home: FC<HomeProps> = ({
                                         </Typography>
                                     </TableCell>
                                 </TableRow> 
+                            </TableBody>
+                        </Table>
+                    </Box>
+                </Paper>
+            </Grid>
+            <Grid
+                xs={12}
+                md={6}
+            >
+                <Paper
+                    elevation={3}
+                    sx={{
+                        overflow: 'hidden'
+                    }}
+                >
+                    <Typography
+                        sx={{
+                            fontSize: 20
+                            , ml: 2
+                            , mt: 1
+                        }}
+                        color='text.disabled'
+                    >
+                        LEADERBOARD
+                    </Typography>
+                    <Box
+                        sx={{
+                            pl: 1
+                            , pr: 1
+                        }}
+                    >
+                        <Table
+                            sx={{
+                                mt: 0
+                            }}
+                        >
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>W</TableCell>
+                                    <TableCell>L</TableCell>
+                                    <TableCell>AVG</TableCell>
+                                    <TableCell>PLAYER</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {
+                                    leaderboard.map(x => (
+                                        <TableRow>
+                                            <TableCell>{x.wins}</TableCell>
+                                            <TableCell>{x.losses}</TableCell>
+                                            <TableCell>{x.avg.toFixed(3)}</TableCell>
+                                            <TableCell>{x.name}</TableCell>
+                                        </TableRow>
+                                    ))
+                                }
                             </TableBody>
                         </Table>
                     </Box>
