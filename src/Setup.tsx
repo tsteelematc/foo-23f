@@ -50,14 +50,14 @@ export const Setup: FC<SetupProps> = ({
     // let num = 1;
     // const [num, setNum] = useState(1);
 
-    const [warn, setWarn] = useState(Math.random() > 0.5);
+    const [warn, setWarn] = useState(false);
 
     return (
         <Box
             sx={{ mt: 2 }}
         >
             <Snackbar 
-                open={ warn } 
+                open={warn} 
                 autoHideDuration={3000}
                 anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                 onClose={() => setWarn(false)}
@@ -75,6 +75,11 @@ export const Setup: FC<SetupProps> = ({
                     () => {
                         // setNum(num + 1);
                         // console.log(num);
+
+                        if (!atLeastOnePlayerChecked) {
+                            setWarn(true);
+                            return;
+                        }
 
                         setNum(num + 1);
                         navigate('/play');
