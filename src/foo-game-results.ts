@@ -7,44 +7,33 @@ const justDaysFormat = durationFormatter<string>({
 });
 
 export type GameResult = {
-    won: boolean;
+    
+    winner: string;
+    players: string[];
+    
     start: string;
     end: string;
 };
 
-export interface WinningPercentageDisplay {
+
+export interface GeneralFactsDisplay {
     totalGames: number;
-    winningPercentage: string; // Formatted to two decimal places with a % sign
-};
-
-export const getWinningPercentageDisplay = (results: GameResult[]): WinningPercentageDisplay => {
-
-    const wins = results.filter(x => x.won).length;
-    const totalGames = results.length;
-    const wp = totalGames > 0
-        ? (wins / totalGames) * 100
-        : 0
-    ;
-
-    // console.log(wins, results.length);
-
-    return {
-        // totalGames: totalGames
-        totalGames
-        , winningPercentage: `${wp.toFixed(2)}%`
-    };
-};
-
-export interface GeneralGameTimeFactsDisplay {
     lastPlayed: string; 
     shortestGame: string;
     longestGame: string;
 };
 
-export const getGeneralGameTimeFacts = (
+export interface LeaderboardEntry {
+    wins: number;
+    losses: number;
+    avg: number;
+    name: string
+};
+
+export const getGeneralFacts = (
     results: GameResult[]
     , fromDateMilliseconds: number 
-): GeneralGameTimeFactsDisplay => {
+): GeneralFactsDisplay => {
 
     const gameEndDatesInMilliseconds = results
         .map(x => Date.parse(x.end))
@@ -57,8 +46,54 @@ export const getGeneralGameTimeFacts = (
     ;
 
     return {
-        lastPlayed: justDaysFormat(fromDateMilliseconds - Math.max(...gameEndDatesInMilliseconds))
+        totalGames: results.length
+        , lastPlayed: justDaysFormat(fromDateMilliseconds - Math.max(...gameEndDatesInMilliseconds))
         , shortestGame: format(Math.min(...gameDurationsInMilliseconds))
         , longestGame: format(Math.max(...gameDurationsInMilliseconds))
     };
+};
+
+export const getPreviousPlayers = (results: GameResult[]) => {
+
+    const previousPlayers = results.flatMap(x => x.players);
+
+    return [
+        ...new Set(previousPlayers)
+    ].sort(
+        (a, b) => a.localeCompare(b)
+    );
+};
+
+const getPlayerRecord = (
+    player: string
+    , results: GameResult[]
+): LeaderboardEntry => {
+
+    const wins = results.filter(x => x.winner == player).length;
+    
+    const gamesPlayerPlayed = results.filter(
+        x => x.players.some(
+            y => y == player
+        )
+    ).length;
+
+    const losses = gamesPlayerPlayed - wins;
+
+    return {
+        wins: wins
+        , losses: losses
+        , avg: wins / gamesPlayerPlayed
+        , name: player
+    };
+};
+
+export const getLeaderboardData = (results: Array<GameResult>): Array<LeaderboardEntry> => {
+
+    const previousPlayers = getPreviousPlayers(results);
+
+    return previousPlayers.map(
+        x => getPlayerRecord(x, results)
+    ).sort(
+        (a, b) => (b.avg * 1000 + b.wins + b.losses) - (a.avg * 1000 + a.wins + a.losses)
+    );
 };
