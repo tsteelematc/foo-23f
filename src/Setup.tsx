@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Unstable_Grid2';
-import { Alert, Box, Snackbar, Typography } from '@mui/material';
+import { Alert, Box, Checkbox, FormControlLabel, Snackbar, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import { FC, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
@@ -93,7 +93,12 @@ export const Setup: FC<SetupProps> = ({
                             md={4}
                             lg={2}
                         >
-                            {x}
+                            <FormControlLabel 
+                                control={
+                                    <Checkbox />
+                                } 
+                                label={x} 
+                            />
                         </Grid>
                     ))
                 }
