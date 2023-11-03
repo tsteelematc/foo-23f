@@ -27,6 +27,13 @@ export const Setup: FC<SetupProps> = ({
 
     const navigate = useNavigate();
 
+    const [availablePlayers, setAvailablePlayers] = useState(
+        previousPlayers.map(x => ({
+            name: x 
+            , checked: false
+        }))
+    );
+
     // let num = 1;
     // const [num, setNum] = useState(1);
 
@@ -86,7 +93,7 @@ export const Setup: FC<SetupProps> = ({
                     Foo
                 </Grid>
                 {
-                    previousPlayers.map(x => (
+                    availablePlayers.map(x => (
                         <Grid
                             xs={12}
                             sm={6}
@@ -95,9 +102,18 @@ export const Setup: FC<SetupProps> = ({
                         >
                             <FormControlLabel 
                                 control={
-                                    <Checkbox />
+                                    <Checkbox 
+                                        key={x.name}
+                                        checked={x.checked}
+                                        onChange={(e) => setAvailablePlayers([
+                                            ...availablePlayers.map(y => ({
+                                                name: y.name
+                                                , checked: x.name == y.name ? !y.checked : y.checked  
+                                            }))
+                                        ])}
+                                    />
                                 } 
-                                label={x} 
+                                label={x.name} 
                             />
                         </Grid>
                     ))
