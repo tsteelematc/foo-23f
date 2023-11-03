@@ -18,7 +18,8 @@ import { Play } from './Play';
 import { 
   GameResult
   , getGeneralFacts
-  , getLeaderboardData
+  , getLeaderboardData,
+  getPreviousPlayers
 } from './foo-game-results';
 
 import { AppBar, Box, Toolbar, Typography } from '@mui/material';
@@ -86,6 +87,7 @@ const App = () => {
         num={num}
         setNum={setNum}
         setTitle={setTitle}
+        previousPlayers={getPreviousPlayers(gameResults)}
       />,
     },
     {

@@ -8,12 +8,14 @@ interface SetupProps {
     num: number;
     setNum: any;
     setTitle: (t: string) => void;
+    previousPlayers: string[];
 };
 
 export const Setup: FC<SetupProps> = ({
     num
     , setNum
     , setTitle
+    , previousPlayers
 }) => {
 
     useEffect(
@@ -83,141 +85,19 @@ export const Setup: FC<SetupProps> = ({
                 <Grid xs={12}>
                     Foo
                 </Grid>
-                <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={2}
-                >
-                    Bar
-                </Grid>
-                <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={2}
-                >
-                    Bar
-                </Grid>
-
-                <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={2}
-                >
-                    Bar
-                </Grid>
-
-                <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={2}
-                >
-                    Bar
-                </Grid>
-
-                <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={2}
-                >
-                    Bar
-                </Grid>
-
-                <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={2}
-                >
-                    Bar
-                </Grid>
-
-                <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={2}
-                >
-                    Bar
-                </Grid>
-
-                <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={2}
-                >
-                    Bar
-                </Grid>
-
-                <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={2}
-                >
-                    Bar
-                </Grid>
-
-                <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={2}
-                >
-                    Bar
-                </Grid>
-
-                <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={2}
-                >
-                    Bar
-                </Grid>
-
-                <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={2}
-                >
-                    Bar
-                </Grid>
-
-                <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={2}
-                >
-                    Bar
-                </Grid>
-
-                <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={2}
-                >
-                    Bar
-                </Grid>
-
-                <Grid
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    lg={2}
-                >
-                    Bar
-                </Grid>
-            </Grid>
-
+                {
+                    previousPlayers.map(x => (
+                        <Grid
+                            xs={12}
+                            sm={6}
+                            md={4}
+                            lg={2}
+                        >
+                            {x}
+                        </Grid>
+                    ))
+                }
+          </Grid>
         </Box>
     );
 };
