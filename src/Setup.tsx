@@ -34,6 +34,19 @@ export const Setup: FC<SetupProps> = ({
         }))
     );
 
+    //
+    // Does NOT need to be "state" ! ! !
+    //
+    // If it were, it would be "duplicate" state, a "bad thing"
+    //
+    // "Duplicate state" is probably the most frequent React "bug" or 
+    // anti-pattern ! ! !
+    //
+    // We identify it as "duplicate" state because it is "calculated" from other 
+    // state (e.g. availablePlayers)
+    //
+    const atLeastOnePlayerChecked = availablePlayers.some(x => x.checked);
+
     // let num = 1;
     // const [num, setNum] = useState(1);
 
@@ -55,7 +68,7 @@ export const Setup: FC<SetupProps> = ({
             </Snackbar>
 
             <Button
-                variant={warn ? "outlined" : "contained"}
+                variant={atLeastOnePlayerChecked ? "contained" : "outlined"}
                 size="large"
                 onClick={
                     // () => navigate('/play')
