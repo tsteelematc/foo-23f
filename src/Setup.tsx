@@ -1,4 +1,4 @@
-import { Box, Checkbox, FormControlLabel } from '@mui/material';
+import { Alert, Box, Checkbox, FormControlLabel, Snackbar } from '@mui/material';
 import Button from '@mui/material/Button';
 import { FC, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
@@ -24,10 +24,15 @@ export const Setup: FC<SetupProps> = ({
             , checked: false
         })));
 
+    const [showWarning, setShowWarning] = useState(false);
+
     useEffect(
         () => setTitle("Game Setup")
         , []
     );
+
+    // "Calculated" state is better than "duplicated" state ! ! !
+    const atLeastOnePlayerChecked = availablePlayers.some(x => x.checked);
 
     console.log("Setup called ! ! !");
 
@@ -40,6 +45,26 @@ export const Setup: FC<SetupProps> = ({
         <Box
             sx={{ mt: 2 }}
         >
+            <Snackbar 
+                anchorOrigin={{ 
+                    vertical: "top"
+                    , horizontal: "center" 
+                }}
+                open={showWarning} 
+                autoHideDuration={2500} 
+                onClose={
+                    () => setShowWarning(false)
+                }
+            >
+                <Alert 
+                    severity="warning" 
+                    sx={{ 
+                        width: '100%' 
+                    }}
+                >
+                    Choose at least one player...
+                </Alert>
+            </Snackbar>
             <Button
                 variant="outlined"
                 size="large"
@@ -49,6 +74,11 @@ export const Setup: FC<SetupProps> = ({
                         // setNum(num + 1);
                         // console.log(num);
                         
+                        if (!atLeastOnePlayerChecked) {
+                            setShowWarning(true);
+                            return;
+                        }
+
                         setNum(num + 1);
                         navigate('/play');
                     }
