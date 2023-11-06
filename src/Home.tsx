@@ -217,7 +217,9 @@ export const Home: FC<HomeProps> = ({
                             <TableBody>
                                 {
                                     leaderboard.map(x => (
-                                        <TableRow>
+                                        <TableRow
+                                            key={x.name}
+                                        >
                                             <TableCell>{x.wins}</TableCell>
                                             <TableCell>{x.losses}</TableCell>
                                             <TableCell>{x.avg.toFixed(3)}</TableCell>
