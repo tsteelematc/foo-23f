@@ -1,4 +1,4 @@
-import { Alert, Box, Checkbox, FormControlLabel, Snackbar } from '@mui/material';
+import { Alert, Box, Checkbox, FormControlLabel, Snackbar, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import { FC, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
@@ -27,12 +27,15 @@ export const Setup: FC<SetupProps> = ({
     const [showWarning, setShowWarning] = useState(false);
 
     useEffect(
-        () => setTitle("Game Setup")
+        () => setTitle("Choose players then start...")
         , []
     );
 
     // "Calculated" state is better than "duplicated" state ! ! !
-    const atLeastOnePlayerChecked = availablePlayers.some(x => x.checked);
+    const atLeastTwoPlayersChecked = availablePlayers
+        .filter(x => x.checked)
+        .length >= 2
+    ;
 
     console.log("Setup called ! ! !");
 
@@ -62,11 +65,11 @@ export const Setup: FC<SetupProps> = ({
                         width: '100%' 
                     }}
                 >
-                    Choose at least one player...
+                    Choose at least two players...
                 </Alert>
             </Snackbar>
             <Button
-                variant="outlined"
+                variant={atLeastTwoPlayersChecked ? "contained" : "outlined"}
                 size="large"
                 onClick={
                     // () => navigate('/play')
@@ -74,7 +77,7 @@ export const Setup: FC<SetupProps> = ({
                         // setNum(num + 1);
                         // console.log(num);
                         
-                        if (!atLeastOnePlayerChecked) {
+                        if (!atLeastTwoPlayersChecked) {
                             setShowWarning(true);
                             return;
                         }
@@ -83,8 +86,20 @@ export const Setup: FC<SetupProps> = ({
                         navigate('/play');
                     }
                 }
+                sx={{
+                    pt: 3
+                    , pb: 3
+                    , width: {
+                        xs: '100%'
+                        , md: 'inherit'
+                    }
+                }}
             >
-                Start the Game
+                <Typography
+                    fontSize={20}
+                >
+                    Start the Game
+                </Typography>
             </Button>
 
             <Grid
