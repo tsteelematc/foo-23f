@@ -7,11 +7,13 @@ import { Box } from '@mui/material';
 interface PlayProps {
     addNewGameResult: (r: GameResult) => void;
     setTitle: (t: string) => void;
+    chosenPlayers: string[];
 };
 
 export const Play: FC<PlayProps> = ({
     addNewGameResult
     , setTitle
+    , chosenPlayers
 }) => {
 
     useEffect(
@@ -29,12 +31,12 @@ export const Play: FC<PlayProps> = ({
     // mean 'unused'.
     // const [startTimestamp] = useState(new Date().toISOString());
 
-    const gameOver = (won: boolean) => {
+    const gameOver = (winner: string) => {
         addNewGameResult({
 
             // Fake it until we make it...
-            winner: "Moe"
-            , players: ["Larry", "Curly", "Moe"]
+            winner: winner
+            , players: chosenPlayers
             
             , start: startTimestamp
             , end: new Date().toISOString()
@@ -44,26 +46,26 @@ export const Play: FC<PlayProps> = ({
 
     return (
         <Box
-            sx={{ mt: 2 }}
+            sx={{ 
+                mt: 2
+                , display: "flex"
+                , flexDirection: "column"
+                , gap: 2
+            }}
         >
-            <Button
-                variant="outlined"
-                size="large"
-                onClick={
-                    () => gameOver(true)
-                }
-            >
-                I Won
-            </Button>
-            <Button
-                variant="outlined"
-                size="large"
-                onClick={
-                    () => gameOver(false)
-                }
-            >
-                I Lost
-            </Button>
+            {
+                chosenPlayers.map(x =>(
+                    <Button
+                        variant="outlined"
+                        size="large"
+                        onClick={
+                            () => gameOver(x)
+                        }
+                    >
+                        {x} Won
+                    </Button>
+                ))
+            }
         </Box>
     );
 };
