@@ -46,7 +46,7 @@ export const Setup: FC<SetupProps> = ({
     const validateAndAddNewPlayer = () => {
 
         // Bail, do nothing, if duplicate name.
-        if (availablePlayers.some(x => 0 == x.name.localeCompare(newPlayerName))) {
+        if (availablePlayers.some(x => x.name.toUpperCase() == newPlayerName.toUpperCase())) {
             return;
         } 
 
