@@ -43,6 +43,26 @@ export const Setup: FC<SetupProps> = ({
 
     const navigate = useNavigate();
 
+    const validateAndAddNewPlayer = () => {
+
+        // Bail, do nothing, if duplicate name.
+        if (availablePlayers.some(x => 0 == x.name.localeCompare(newPlayerName))) {
+            return;
+        } 
+
+        setAvailablePlayers([
+            ...availablePlayers
+            , {
+                name: newPlayerName
+                , checked: true
+            }
+        ].sort(
+            (a, b) => a.name.localeCompare(b.name)
+        ));
+
+        setNewPlayerName("");
+    };
+
     // let num = 1;
     // const [num, setNum] = useState(1);
 
@@ -124,19 +144,7 @@ export const Setup: FC<SetupProps> = ({
                 <Button
                     variant='contained'
                     onClick={
-                        () => {
-                            setAvailablePlayers([
-                                ...availablePlayers
-                                , {
-                                    name: newPlayerName
-                                    , checked: true
-                                }
-                            ].sort(
-                                (a, b) => a.name.localeCompare(b.name)
-                            ));
-
-                            setNewPlayerName("");
-                        }
+                        validateAndAddNewPlayer
                     }
                 >
                     Add
