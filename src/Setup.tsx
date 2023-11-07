@@ -1,4 +1,4 @@
-import { Alert, Box, Checkbox, FormControlLabel, Snackbar, Typography } from '@mui/material';
+import { Alert, Box, Checkbox, FormControlLabel, Snackbar, TextField, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import { FC, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
@@ -93,6 +93,7 @@ export const Setup: FC<SetupProps> = ({
                         xs: '100%'
                         , md: 'inherit'
                     }
+                    , mb: 2
                 }}
             >
                 <Typography
@@ -101,7 +102,29 @@ export const Setup: FC<SetupProps> = ({
                     Start the Game
                 </Typography>
             </Button>
-
+            <Grid
+                container
+                spacing={2}
+                sx={{
+                    maxWidth: "600px"
+                    , mr: 2
+                }}
+            >
+                <Grid xs={10}>
+                    <TextField 
+                        label="Enter new player name..." 
+                        variant="outlined" 
+                        fullWidth
+                    />
+                </Grid>
+                <Grid xs={2}>
+                    <Button
+                        variant='contained'
+                    >
+                        Add
+                    </Button>
+                </Grid>
+            </Grid>
             <Grid
                 container
                 spacing={2}
