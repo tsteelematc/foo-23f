@@ -48,7 +48,10 @@ export const Setup: FC<SetupProps> = ({
     const validateAndAddNewPlayer = () => {
 
         // Bail, do nothing, if duplicate name.
-        if (availablePlayers.some(x => x.name.toUpperCase() == newPlayerName.toUpperCase())) {
+        if (
+            newPlayerName.length == 0 
+            || availablePlayers.some(x => x.name.toUpperCase() == newPlayerName.toUpperCase())
+        ) {
             return;
         } 
 
@@ -111,7 +114,7 @@ export const Setup: FC<SetupProps> = ({
                                 .filter(x => x.checked)
                                 .map(x => x.name)
                         );
-                        
+
                         setNum(num + 1);
                         navigate('/play');
                     }
@@ -150,7 +153,7 @@ export const Setup: FC<SetupProps> = ({
                     }
                 />
                 <Button
-                    variant='contained'
+                    variant={newPlayerName.length > 0 ? 'contained' : 'outlined'}
                     onClick={
                         validateAndAddNewPlayer
                     }
