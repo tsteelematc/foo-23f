@@ -26,6 +26,8 @@ export const Setup: FC<SetupProps> = ({
 
     const [showWarning, setShowWarning] = useState(false);
 
+    const [newPlayerName, setNewPlayerName] = useState("");
+
     useEffect(
         () => setTitle("Choose players then start...")
         , []
@@ -114,9 +116,28 @@ export const Setup: FC<SetupProps> = ({
                     label="Enter new player name..." 
                     variant="outlined" 
                     fullWidth
+                    value={newPlayerName}
+                    onChange={
+                        (e) => setNewPlayerName(e.target.value)
+                    }
                 />
                 <Button
                     variant='contained'
+                    onClick={
+                        () => {
+                            setAvailablePlayers([
+                                ...availablePlayers
+                                , {
+                                    name: newPlayerName
+                                    , checked: true
+                                }
+                            ].sort(
+                                (a, b) => a.name.localeCompare(b.name)
+                            ));
+
+                            setNewPlayerName("");
+                        }
+                    }
                 >
                     Add
                 </Button>
