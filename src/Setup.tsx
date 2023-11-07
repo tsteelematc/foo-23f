@@ -102,29 +102,25 @@ export const Setup: FC<SetupProps> = ({
                     Start the Game
                 </Typography>
             </Button>
-            <Grid
-                container
-                spacing={2}
+            <Box
                 sx={{
-                    maxWidth: "600px"
-                    , mr: 2
+                    display: "flex"
+                    , flexDirection: "row"
+                    , gap: 2
+                    , maxWidth: "900px"
                 }}
             >
-                <Grid xs={10}>
-                    <TextField 
-                        label="Enter new player name..." 
-                        variant="outlined" 
-                        fullWidth
-                    />
-                </Grid>
-                <Grid xs={2}>
-                    <Button
-                        variant='contained'
-                    >
-                        Add
-                    </Button>
-                </Grid>
-            </Grid>
+                <TextField 
+                    label="Enter new player name..." 
+                    variant="outlined" 
+                    fullWidth
+                />
+                <Button
+                    variant='contained'
+                >
+                    Add
+                </Button>
+            </Box>
             <Grid
                 container
                 spacing={2}
