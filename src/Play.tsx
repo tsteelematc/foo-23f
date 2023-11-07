@@ -61,6 +61,9 @@ export const Play: FC<PlayProps> = ({
                         onClick={
                             () => gameOver(x)
                         }
+                        sx={{
+                            maxWidth: 200
+                        }}
                     >
                         {x} Won
                     </Button>
