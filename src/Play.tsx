@@ -56,6 +56,7 @@ export const Play: FC<PlayProps> = ({
             {
                 chosenPlayers.map(x =>(
                     <Button
+                        key={x}
                         variant="outlined"
                         size="large"
                         onClick={
