@@ -53,22 +53,40 @@ export const Setup: FC<SetupProps> = ({
         // Validate here.
         if (
             newPlayerName.length == 0
-            || availablePlayers.some(x => x.name.toUpperCase() == newPlayerName.toLocaleUpperCase())
         ) {
             return;
         }
 
-        setAvailablePlayers(
-            [
-                ...availablePlayers
-                , {
-                    name: newPlayerName
-                    , checked: true
-                }
-            ].sort(
-                (a, b) => a.name.localeCompare(b.name)
-            )
+        const duplicatePlayerName = availablePlayers.some(
+            x => x.name.toUpperCase() == newPlayerName.toLocaleUpperCase()
         );
+
+        if (!duplicatePlayerName) {
+            setAvailablePlayers(
+                [
+                    ...availablePlayers
+                    , {
+                        name: newPlayerName
+                        , checked: true
+                    }
+                ].sort(
+                    (a, b) => a.name.localeCompare(b.name)
+                )
+            );
+        } else {
+
+            // Just 'check' the player instead.
+            setAvailablePlayers(
+                availablePlayers.map(x =>({
+                    ...x
+                    , checked: x.name.toUpperCase() == newPlayerName.toLocaleUpperCase()
+                        // Always 'check' a duplicate player being added.
+                        ? true          
+                        // Don'te mess with checked state for non-duplicate players.
+                        : x.checked     
+                }))
+            );
+        }
 
         setNewPlayerName("");
     };
