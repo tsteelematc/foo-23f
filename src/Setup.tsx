@@ -7,8 +7,9 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 interface SetupProps {
     num: number;
     setNum: any;
-    setTitle: (t: string) => void;
+    setTitle: (title: string) => void;
     previousPlayers: string[];
+    setChosenPlayers: (players: string[]) => void;
 };
 
 export const Setup: FC<SetupProps> = ({
@@ -16,6 +17,7 @@ export const Setup: FC<SetupProps> = ({
     , setNum
     , setTitle
     , previousPlayers
+    , setChosenPlayers
 }) => {
 
     const [availablePlayers, setAvailablePlayers] = 
@@ -108,6 +110,12 @@ export const Setup: FC<SetupProps> = ({
                             setShowWarning(true);
                             return;
                         }
+
+                        setChosenPlayers(
+                            availablePlayers
+                                .filter(x => x.checked)
+                                .map(x => x.name)
+                        );
 
                         setNum(num + 1);
                         navigate('/play');
