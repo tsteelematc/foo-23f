@@ -176,6 +176,7 @@ export const Setup: FC<SetupProps> = ({
                             sm={6}
                             md={4}
                             lg={2}
+                            key={x.name}
                         >
                             <FormControlLabel 
                                 control={
