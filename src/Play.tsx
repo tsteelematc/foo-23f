@@ -2,7 +2,7 @@ import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
 import { GameResult } from './foo-game-results';
 import { FC, useEffect, useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, FormControlLabel, Switch } from '@mui/material';
 
 interface PlayProps {
     addNewGameResult: (r: GameResult) => void;
@@ -54,16 +54,47 @@ export const Play: FC<PlayProps> = ({
         >
             {
                chosenPlayers.map(x => (
-                    <Button
+                    <Box
                         key={x}
-                        variant="outlined"
-                        size="large"
-                        onClick={
-                            () => gameOver(x)
-                        }
+                        sx={{ 
+                            mt: 2
+                            , mb: 4
+                            , display: "flex"
+                            , flexDirection: "column"
+                            , gap: 2 
+                        }}
                     >
-                        {x} Won
-                    </Button>
+                        <FormControlLabel
+                            control={
+                                <Switch 
+                                    color="success" 
+                                />
+                            }
+                            label={`${x} had at least 1 unbelievable turn`}
+                            labelPlacement="end"
+                        />                        
+                        <FormControlLabel
+                            control={
+                                <Switch 
+                                    color="error" 
+                                />
+                            }
+                            label={`${x} was accused of cheating`}
+                            labelPlacement="end"
+                        />  
+                        <Button
+                            variant="outlined"
+                            size="large"
+                            onClick={
+                                () => gameOver(x)
+                            }
+                            sx={{
+                                maxWidth: "900px"
+                            }}
+                        >
+                            {x} Won
+                        </Button>
+                    </Box>
                )) 
             }
         </Box>
