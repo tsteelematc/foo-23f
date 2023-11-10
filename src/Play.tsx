@@ -2,7 +2,8 @@ import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
 import { GameResult } from './foo-game-results';
 import { FC, useEffect, useState } from 'react';
-import { Box, FormControlLabel, Switch } from '@mui/material';
+import { Box, FormControlLabel, Switch, Typography } from '@mui/material';
+import { Add, Remove } from '@mui/icons-material';
 
 interface PlayProps {
     addNewGameResult: (r: GameResult) => void;
@@ -52,6 +53,30 @@ export const Play: FC<PlayProps> = ({
                 , gap: 2 
             }}
         >
+            <Box
+                sx={{
+                    display: "flex"
+                    , flexDirection: "row"
+                    , gap: 2
+                    , alignItems: "center"
+                }}
+            >
+                <Button
+                    variant='contained'
+                >
+                    <Remove />
+                </Button>
+                <Typography
+                    fontSize={20}
+                >
+                    Turn 1
+                </Typography>
+                <Button
+                    variant='contained'
+                >
+                    <Add />
+                </Button>
+            </Box>
             {
                chosenPlayers.map(x => (
                     <Box
