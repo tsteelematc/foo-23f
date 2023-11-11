@@ -2,7 +2,7 @@ import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
 import { GameResult } from './foo-game-results';
 import { FC, useEffect, useState } from 'react';
-import { Box, FormControlLabel, Switch, Typography } from '@mui/material';
+import { Box, FormControlLabel, Rating, Switch, Typography } from '@mui/material';
 import { Add, Remove } from '@mui/icons-material';
 
 interface PlayProps {
@@ -18,7 +18,7 @@ export const Play: FC<PlayProps> = ({
 }) => {
 
     useEffect(
-        () => setTitle("Play Foo & Collect Data")
+        () => setTitle("Track turns and player turn rating...")
         , []
     );
 
@@ -59,6 +59,7 @@ export const Play: FC<PlayProps> = ({
                     , flexDirection: "row"
                     , gap: 2
                     , alignItems: "center"
+                    , mb: 2
                 }}
             >
                 <Button
@@ -79,47 +80,39 @@ export const Play: FC<PlayProps> = ({
             </Box>
             {
                chosenPlayers.map(x => (
-                    <Box
-                        key={x}
-                        sx={{ 
-                            mt: 2
-                            , mb: 4
-                            , display: "flex"
-                            , flexDirection: "column"
-                            , gap: 2 
+                <Box
+                    key={x}
+                    sx={{
+                        display: "flex"
+                        , flexDirection: "column"
+                        , gap: 2
+                        , mb:4
+                    }}
+                >
+                    <Box>
+                    <Typography 
+                        component="legend"
+                    >
+                        {`How was ${x}'s turn 1?`}
+                    </Typography>
+                    <Rating 
+                        name="no-value" 
+                        value={null} 
+                    />
+                    </Box>
+                    <Button
+                        variant="outlined"
+                        size="large"
+                        onClick={
+                            () => gameOver(x)
+                        }
+                        sx={{
+                            maxWidth: "900px"
                         }}
                     >
-                        <FormControlLabel
-                            control={
-                                <Switch 
-                                    color="success" 
-                                />
-                            }
-                            label={`${x} had at least 1 unbelievable turn`}
-                            labelPlacement="end"
-                        />                        
-                        <FormControlLabel
-                            control={
-                                <Switch 
-                                    color="error" 
-                                />
-                            }
-                            label={`${x} was accused of cheating`}
-                            labelPlacement="end"
-                        />  
-                        <Button
-                            variant="outlined"
-                            size="large"
-                            onClick={
-                                () => gameOver(x)
-                            }
-                            sx={{
-                                maxWidth: "900px"
-                            }}
-                        >
-                            {x} Won
-                        </Button>
-                    </Box>
+                        {x} Won
+                    </Button>                    
+                </Box>
                )) 
             }
         </Box>
