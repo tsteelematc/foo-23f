@@ -2,8 +2,8 @@ import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
 import { GameResult } from './foo-game-results';
 import { FC, useEffect, useState } from 'react';
-import { Box, FormControlLabel, Switch, Typography } from '@mui/material';
-import { Add, Remove } from '@mui/icons-material';
+import { Box, ButtonGroup, FormControlLabel, Switch, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
+import { Add, Remove, ThumbDown, ThumbDownSharp, ThumbUpSharp, ThumbsUpDown } from '@mui/icons-material';
 
 interface PlayProps {
     addNewGameResult: (r: GameResult) => void;
@@ -18,7 +18,7 @@ export const Play: FC<PlayProps> = ({
 }) => {
 
     useEffect(
-        () => setTitle("Play Foo & Collect Data")
+        () => setTitle(`Track turn "feelings"...`)
         , []
     );
 
@@ -89,24 +89,25 @@ export const Play: FC<PlayProps> = ({
                             , gap: 2 
                         }}
                     >
-                        <FormControlLabel
-                            control={
-                                <Switch 
-                                    color="success" 
-                                />
-                            }
-                            label={`${x} had at least 1 unbelievable turn`}
-                            labelPlacement="end"
-                        />                        
-                        <FormControlLabel
-                            control={
-                                <Switch 
-                                    color="error" 
-                                />
-                            }
-                            label={`${x} was accused of cheating`}
-                            labelPlacement="end"
-                        />  
+                        {`How was ${x}'s Turn 1?`}
+                        <ToggleButtonGroup
+                            exclusive
+                            value="up"
+                        >
+                            <ToggleButton 
+                                value="down"
+                            >
+                                <ThumbDownSharp />
+                            </ToggleButton>
+                            <ToggleButton 
+                                value="meh">
+                                Meh
+                            </ToggleButton>
+                            <ToggleButton 
+                                value="up">
+                                <ThumbUpSharp />
+                            </ToggleButton>
+                        </ToggleButtonGroup>
                         <Button
                             variant="outlined"
                             size="large"
