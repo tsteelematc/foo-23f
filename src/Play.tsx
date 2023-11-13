@@ -47,12 +47,7 @@ export const Play: FC<PlayProps> = ({
             winner: winner
             , players: chosenPlayers.map(x => ({
                 name: x
-                , turns: [
-                    {
-                        num: 1,
-                        status: "Thumbs Down"
-                    }
-                ]
+                , turns: inGamePlayers.find(y => y.name == x)?.turns ?? []
             }))
             
             , start: startTimestamp
