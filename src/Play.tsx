@@ -74,8 +74,8 @@ export const Play: FC<PlayProps> = ({
             >
                 <Button
                     variant='contained'
-                    // 4 - Decrement, guard against negative with a ternary, i-o-g...
-                    onClick={() => setTurnNumber(turnNumber > 0 ? turnNumber - 1 : turnNumber)}
+                    // 4 - Decrement, guard against negative (and zero) with a ternary, i-o-g...
+                    onClick={() => setTurnNumber(turnNumber > 1 ? turnNumber - 1 : turnNumber)}
                 >
                     <Remove />
                 </Button>
@@ -105,7 +105,8 @@ export const Play: FC<PlayProps> = ({
                             , gap: 2 
                         }}
                     >
-                        {`How was ${x}'s Turn 1?`}
+                        {/* 5 - Oops, this is dynamic too ! ! !*/}
+                        {`How was ${x}'s Turn ${turnNumber}?`}
                         <ToggleButtonGroup
                             exclusive
                             value="up"
