@@ -1,9 +1,9 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
-import { GameResult } from './foo-game-results';
+import { GameResult, Player } from './foo-game-results';
 import { FC, useEffect, useState } from 'react';
-import { Box, ButtonGroup, FormControlLabel, Switch, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
-import { Add, Remove, ThumbDown, ThumbDownSharp, ThumbUpSharp, ThumbsUpDown } from '@mui/icons-material';
+import { Box, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
+import { Add, Remove, ThumbDownSharp, ThumbUpSharp } from '@mui/icons-material';
 
 interface PlayProps {
     addNewGameResult: (r: GameResult) => void;
@@ -19,6 +19,21 @@ export const Play: FC<PlayProps> = ({
 
     // 1 - First local state...
     const [turnNumber, setTurnNumber] = useState(1);
+
+    // 6 - "Player" local state...
+    const [inGamePlayers, setInGamePlayers] = useState<Player[]>(chosenPlayers.map(x =>({
+        name: x 
+        , turns: [
+            {
+                num: 5
+                , status: "Thumbs Down"
+            }
+            , {
+                num: 6
+                , status: "Thumbs Up"
+            }
+        ]
+    })));
 
     useEffect(
         () => setTitle(`Track turn "feelings"...`)
@@ -109,19 +124,24 @@ export const Play: FC<PlayProps> = ({
                         {`How was ${x}'s Turn ${turnNumber}?`}
                         <ToggleButtonGroup
                             exclusive
-                            value="up"
+                            value={
+                                inGamePlayers
+                                    .find(y => y.name == x)
+                                    ?.turns.find(y => y.num == turnNumber)
+                                    ?.status
+                            }
                         >
                             <ToggleButton 
-                                value="down"
+                                value="Thumbs Down"
                             >
                                 <ThumbDownSharp />
                             </ToggleButton>
                             <ToggleButton 
-                                value="meh">
+                                value="Meh">
                                 Meh
                             </ToggleButton>
                             <ToggleButton 
-                                value="up">
+                                value="Thumbs Up">
                                 <ThumbUpSharp />
                             </ToggleButton>
                         </ToggleButtonGroup>
