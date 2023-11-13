@@ -20,6 +20,7 @@ import {
   , getGeneralFacts
   , getLeaderboardData
   , getPreviousPlayers
+  , getBadTurnData
 } from './foo-game-results';
 
 import { AppBar, Box, Toolbar, Typography } from '@mui/material';
@@ -27,35 +28,64 @@ import TableBarOutlined from '@mui/icons-material/TableBarOutlined';
 
 const dummyGameResults: GameResult[] = [
   {
-      winner: "Tom"
-      ,players: ["Tom", "taylor"]
+      winner: "Larry"
+      ,players: [
+          {
+              name: "Larry"
+              , turns: [
+                  { num: 1, status: "Meh"}
+                  , { num: 2, status: "Thumbs Up"}
+                  , { num: 3, status: "Thumbs Up"}
+              ]
+          }
+          , {
+              name: "Curly"
+              , turns: [
+                  { num: 1, status: "Meh"}
+                  , { num: 2, status: "Meh"}
+              ]
+          }
+          , {
+              name: "Moe"
+              , turns: [
+                  { num: 1, status: "Thumbs Down"}
+                  , { num: 2, status: "Meh"}
+              ]
+          }
+      ]
 
       , start: "2023-10-01T17:40:46.333Z"
       , end: "2023-10-01T17:53:27.123Z"
   }
   , {
-      winner: "Troy"
-      , players: ["Troy", "Jonah", "Sheldon", "Tom"]
-      , start: "2023-10-09T17:55:46.333Z"
-      , end: "2023-10-09T18:00:27.123Z"
-  }
-  , {
-      winner: "Troy"
-      , players: ["Troy", "Larry"]
-      , start: "2023-10-09T17:55:46.333Z"
-      , end: "2023-10-09T18:00:27.123Z"
-  }
-  , {
       winner: "Larry"
-      , players: ["Troy", "Larry"]
-      , start: "2023-10-09T17:55:46.333Z"
-      , end: "2023-10-09T18:00:27.123Z"
-  }
-  , {
-      winner: "Larry"
-      , players: ["Troy", "Larry"]
-      , start: "2023-10-09T17:55:46.333Z"
-      , end: "2023-10-09T18:00:27.123Z"
+      ,players: [
+          {
+              name: "Larry"
+              , turns: [
+                  { num: 1, status: "Meh"}
+                  , { num: 2, status: "Thumbs Up"}
+                  , { num: 3, status: "Thumbs Up"}
+              ]
+          }
+          , {
+              name: "Curly"
+              , turns: [
+                  { num: 1, status: "Meh"}
+                  , { num: 2, status: "Meh"}
+              ]
+          }
+          , {
+              name: "Moe"
+              , turns: [
+                  { num: 1, status: "Thumbs Down"}
+                  , { num: 2, status: "Meh"}
+              ]
+          }
+      ]
+
+      , start: "2023-10-01T17:40:46.333Z"
+      , end: "2023-10-01T17:53:27.123Z"
   }
 ];
 
@@ -80,6 +110,7 @@ const App = () => {
         generalFacts={ getGeneralFacts(gameResults, Date.now())}
         leaderboard={ getLeaderboardData(gameResults) }
         setTitle={setTitle}
+        badTurnData={ getBadTurnData(gameResults) }
       />,
     },
     {
