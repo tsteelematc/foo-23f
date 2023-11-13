@@ -17,6 +17,9 @@ export const Play: FC<PlayProps> = ({
     , chosenPlayers
 }) => {
 
+    // 1 - First local state...
+    const [turnNumber, setTurnNumber] = useState(1);
+
     useEffect(
         () => setTitle(`Track turn "feelings"...`)
         , []
@@ -71,16 +74,21 @@ export const Play: FC<PlayProps> = ({
             >
                 <Button
                     variant='contained'
+                    // 4 - Decrement, guard against negative with a ternary, i-o-g...
+                    onClick={() => setTurnNumber(turnNumber > 0 ? turnNumber - 1 : turnNumber)}
                 >
                     <Remove />
                 </Button>
                 <Typography
                     fontSize={20}
                 >
-                    Turn 1
+                    {/* 2 - Show the turn number... */}
+                    Turn {turnNumber}
                 </Typography>
                 <Button
                     variant='contained'
+                    // 3 - Increment, easy...
+                    onClick={() => setTurnNumber(turnNumber + 1)}
                 >
                     <Add />
                 </Button>
