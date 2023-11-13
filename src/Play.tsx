@@ -38,7 +38,12 @@ export const Play: FC<PlayProps> = ({
             winner: winner
             , players: chosenPlayers.map(x => ({
                 name: x
-                , turns: []
+                , turns: [
+                    {
+                        num: 1,
+                        status: "Thumbs Down"
+                    }
+                ]
             }))
             
             , start: startTimestamp
