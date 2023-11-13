@@ -6,15 +6,27 @@ const justDaysFormat = durationFormatter<string>({
 	allowMultiples: ["y", "mo", "d"]
 });
 
+export type TurnStatus = "Thumbs Down" | "Meh" | "Thumbs Up";
+
+export type Turn = {
+    num: number;
+    status: TurnStatus;
+};
+
+export type Player = {
+    name: string;
+    turns: Turn[]; 
+}
+
 export type GameResult = {
     
+    // won: boolean;
     winner: string;
-    players: string[];
+    players: Player[];
     
     start: string;
     end: string;
 };
-
 
 export interface GeneralFactsDisplay {
     totalGames: number;
@@ -29,6 +41,11 @@ export interface LeaderboardEntry {
     avg: number;
     name: string
 };
+
+export interface BadTurnDisplay {
+    name: string;
+    badTurnCount: number;
+}
 
 export const getGeneralFacts = (
     results: GameResult[]
@@ -53,9 +70,12 @@ export const getGeneralFacts = (
     };
 };
 
-export const getPreviousPlayers = (results: GameResult[]) => {
+export const getPreviousPlayers = (results: GameResult[]): string[] => {
 
-    const previousPlayers = results.flatMap(x => x.players);
+    const previousPlayers = results
+        .flatMap(x => x.players)
+        .map(x => x.name)
+    ;
 
     return [
         ...new Set(previousPlayers)
@@ -73,7 +93,7 @@ const getPlayerRecord = (
     
     const gamesPlayerPlayed = results.filter(
         x => x.players.some(
-            y => y == player
+            y => y.name == player
         )
     ).length;
 
@@ -97,3 +117,21 @@ export const getLeaderboardData = (results: Array<GameResult>): Array<Leaderboar
         (a, b) => (b.avg * 1000 + b.wins + b.losses) - (a.avg * 1000 + a.wins + a.losses)
     );
 };
+
+export const getBadTurnData = (results: GameResult[]): BadTurnDisplay[] => {
+
+    const players = getPreviousPlayers(results);
+
+    return players.map(
+        x => ({
+            name: x
+            , badTurnCount: results
+                .flatMap(y => y.players)
+                .filter(y => y.name == x)
+                .flatMap(y => y.turns)
+                .filter(y => y.status == "Thumbs Down").length
+        })
+    ).sort(
+        (a, b) => b.badTurnCount - a.badTurnCount
+    );
+}; 

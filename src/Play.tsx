@@ -2,7 +2,8 @@ import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
 import { GameResult } from './foo-game-results';
 import { FC, useEffect, useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, ButtonGroup, FormControlLabel, Switch, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
+import { Add, Remove, ThumbDown, ThumbDownSharp, ThumbUpSharp, ThumbsUpDown } from '@mui/icons-material';
 
 interface PlayProps {
     addNewGameResult: (r: GameResult) => void;
@@ -17,7 +18,7 @@ export const Play: FC<PlayProps> = ({
 }) => {
 
     useEffect(
-        () => setTitle("Play Foo & Collect Data")
+        () => setTitle(`Track turn "feelings"...`)
         , []
     );
 
@@ -35,7 +36,10 @@ export const Play: FC<PlayProps> = ({
         addNewGameResult({
 
             winner: winner
-            , players: chosenPlayers
+            , players: chosenPlayers.map(x => ({
+                name: x
+                , turns: []
+            }))
             
             , start: startTimestamp
             , end: new Date().toISOString()
@@ -52,18 +56,74 @@ export const Play: FC<PlayProps> = ({
                 , gap: 2 
             }}
         >
+            <Box
+                sx={{
+                    display: "flex"
+                    , flexDirection: "row"
+                    , gap: 2
+                    , alignItems: "center"
+                }}
+            >
+                <Button
+                    variant='contained'
+                >
+                    <Remove />
+                </Button>
+                <Typography
+                    fontSize={20}
+                >
+                    Turn 1
+                </Typography>
+                <Button
+                    variant='contained'
+                >
+                    <Add />
+                </Button>
+            </Box>
             {
                chosenPlayers.map(x => (
-                    <Button
+                    <Box
                         key={x}
-                        variant="outlined"
-                        size="large"
-                        onClick={
-                            () => gameOver(x)
-                        }
+                        sx={{ 
+                            mt: 2
+                            , mb: 4
+                            , display: "flex"
+                            , flexDirection: "column"
+                            , gap: 2 
+                        }}
                     >
-                        {x} Won
-                    </Button>
+                        {`How was ${x}'s Turn 1?`}
+                        <ToggleButtonGroup
+                            exclusive
+                            value="Thumbs Up"
+                        >
+                            <ToggleButton 
+                                value="Thumbs Down"
+                            >
+                                <ThumbDownSharp />
+                            </ToggleButton>
+                            <ToggleButton 
+                                value="Meh">
+                                Meh
+                            </ToggleButton>
+                            <ToggleButton 
+                                value="Thumbs Up">
+                                <ThumbUpSharp />
+                            </ToggleButton>
+                        </ToggleButtonGroup>
+                        <Button
+                            variant="outlined"
+                            size="large"
+                            onClick={
+                                () => gameOver(x)
+                            }
+                            sx={{
+                                maxWidth: "900px"
+                            }}
+                        >
+                            {x} Won
+                        </Button>
+                    </Box>
                )) 
             }
         </Box>

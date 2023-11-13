@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
-import { GeneralFactsDisplay, LeaderboardEntry } from './foo-game-results';
+import { BadTurnDisplay, GeneralFactsDisplay, LeaderboardEntry } from './foo-game-results';
 import { FC } from 'react';
 import { Typography, Paper, Table, TableBody, TableRow, TableCell, Box, TableHead } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
@@ -12,12 +12,14 @@ interface HomeProps {
     generalFacts: GeneralFactsDisplay;
     leaderboard: LeaderboardEntry[];
     setTitle: (t: string) => void;
+    badTurnData: BadTurnDisplay[];
 }
 
 export const Home: FC<HomeProps> = ({
     generalFacts
     , leaderboard
     , setTitle
+    , badTurnData
 }) => {
 
     useEffect(
@@ -90,18 +92,10 @@ export const Home: FC<HomeProps> = ({
                             <TableBody>
                                 <TableRow>
                                     <TableCell>
-                                        <Typography
-                                            fontSize={20}
-                                        >
-                                            Total Games
-                                        </Typography>
+                                        Total Games
                                     </TableCell>
                                     <TableCell>
-                                        <Typography
-                                            fontSize={20}
-                                        >
-                                            {generalFacts.totalGames}
-                                        </Typography>
+                                        {generalFacts.totalGames}
                                     </TableCell>
                                 </TableRow>                     
                                 <TableRow
@@ -112,18 +106,10 @@ export const Home: FC<HomeProps> = ({
                                     }}
                                 >
                                     <TableCell>
-                                        <Typography
-                                            fontSize={20}
-                                        >
-                                            Last Played
-                                        </Typography>
+                                        Last Played
                                     </TableCell>
                                     <TableCell>
-                                        <Typography
-                                            fontSize={20}
-                                        >
-                                            {generalFacts.lastPlayed} ago
-                                        </Typography>
+                                        {generalFacts.lastPlayed} ago
                                     </TableCell>
                                 </TableRow> 
                                 <TableRow
@@ -134,18 +120,10 @@ export const Home: FC<HomeProps> = ({
                                     }}
                                 >
                                     <TableCell>
-                                        <Typography
-                                            fontSize={20}
-                                        >
-                                            Shortest Game
-                                        </Typography>
+                                        Shortest Game
                                     </TableCell>
                                     <TableCell>
-                                        <Typography
-                                            fontSize={20}
-                                        >
-                                            {generalFacts.shortestGame}
-                                        </Typography>
+                                        {generalFacts.shortestGame}
                                     </TableCell>
                                 </TableRow> 
                                 <TableRow
@@ -156,18 +134,10 @@ export const Home: FC<HomeProps> = ({
                                     }}
                                 >
                                     <TableCell>
-                                        <Typography
-                                            fontSize={20}
-                                        >
-                                            Longest Game
-                                        </Typography>
+                                        Longest Game
                                     </TableCell>
                                     <TableCell>
-                                        <Typography
-                                            fontSize={20}
-                                        >
-                                            {generalFacts.longestGame}
-                                        </Typography>
+                                        {generalFacts.longestGame}
                                     </TableCell>
                                 </TableRow> 
                             </TableBody>
@@ -232,7 +202,60 @@ export const Home: FC<HomeProps> = ({
                     </Box>
                 </Paper>
             </Grid>
-      </Grid>
+            <Grid
+                xs={12}
+                md={6}
+            >
+                <Paper
+                    elevation={3}
+                    sx={{
+                        overflow: 'hidden'
+                    }}
+                >
+                    <Typography
+                        sx={{
+                            fontSize: 20
+                            , ml: 2
+                            , mt: 1
+                        }}
+                        color='text.disabled'
+                    >
+                        BAD TURNS
+                    </Typography>
+                    <Box
+                        sx={{
+                            pl: 1
+                            , pr: 1
+                        }}
+                    >
+                        <Table
+                            sx={{
+                                mt: 0
+                            }}
+                        >
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>PLAYER</TableCell>
+                                    <TableCell>BAD TURN COUNT</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {
+                                    badTurnData.map(x => (
+                                        <TableRow
+                                            key={x.name}
+                                        >
+                                            <TableCell>{x.name}</TableCell>
+                                            <TableCell>{x.badTurnCount}</TableCell>
+                                        </TableRow>
+                                    ))
+                                }
+                            </TableBody>
+                        </Table>
+                    </Box>
+                </Paper>
+            </Grid>
+        </Grid>
         </>
     );
 };
