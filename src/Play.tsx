@@ -23,16 +23,7 @@ export const Play: FC<PlayProps> = ({
     // 6 - "Player" local state...
     const [inGamePlayers, setInGamePlayers] = useState<Player[]>(chosenPlayers.map(x =>({
         name: x 
-        , turns: [
-            {
-                num: 5
-                , status: "Thumbs Down"
-            }
-            , {
-                num: 6
-                , status: "Thumbs Up"
-            }
-        ]
+        , turns: []
     })));
 
     useEffect(
@@ -130,6 +121,28 @@ export const Play: FC<PlayProps> = ({
                                     .find(y => y.name == x)
                                     ?.turns.find(y => y.num == turnNumber)
                                     ?.status
+                            }
+                            // 8 - Now update when pressed...
+                            // . Always update each turn for each player
+                            // . Removing the current turn number
+                            // . And adding the new value for the current turn
+                            // . For the current player...
+                            onChange={
+                                (e, value) => setInGamePlayers([
+                                    ...inGamePlayers
+                                        .map(y => ({
+                                            name: y.name
+                                            , turns: y.name == x 
+                                                ? [
+                                                    ...y.turns.filter(z => z.num != turnNumber)
+                                                    , {
+                                                        num: turnNumber
+                                                        , status: value
+                                                    }
+                                                ]
+                                                : y.turns
+                                        }))
+                                ])
                             }
                         >
                             <ToggleButton 
