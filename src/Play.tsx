@@ -124,6 +124,7 @@ export const Play: FC<PlayProps> = ({
                         {`How was ${x}'s Turn ${turnNumber}?`}
                         <ToggleButtonGroup
                             exclusive
+                            // 7 - Optional chaining FTW, blah, blah, blah...
                             value={
                                 inGamePlayers
                                     .find(y => y.name == x)
