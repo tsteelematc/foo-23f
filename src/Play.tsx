@@ -45,10 +45,7 @@ export const Play: FC<PlayProps> = ({
         addNewGameResult({
 
             winner: winner
-            , players: chosenPlayers.map(x => ({
-                name: x
-                , turns: inGamePlayers.find(y => y.name == x)?.turns ?? []
-            }))
+            , players: inGamePlayers
             
             , start: startTimestamp
             , end: new Date().toISOString()
