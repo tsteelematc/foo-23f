@@ -88,7 +88,7 @@ export const Play: FC<PlayProps> = ({
                         // }
 
                         //
-                        // Ternanary, always set the turn number,
+                        // Ternary, always set the turn number,
                         // sometimes setting it equal to what it
                         // already is.
                         //
