@@ -76,12 +76,33 @@ export const Play: FC<PlayProps> = ({
                     variant='contained'
                     onClick={
 
+                        //
+                        // Multiple statement lambda, 
+                        // specifically an if-statement and
+                        // a setTurnNumber() statement.
+                        //
+                        // () => {
+                        //     if (turnNumber > 1) {
+                        //         setTurnNumber(turnNumber - 1);
+                        //     }
+                        // }
+
+                        //
+                        // Ternanary, always set the turn number,
+                        // sometimes setting it equal to what it
+                        // already is.
+                        //
                         // () => setTurnNumber(
                         //     turnNumber > 1
                         //     ? turnNumber - 1
                         //     : turnNumber
                         // )
 
+                        //
+                        // Boolean short circuit approach, never 
+                        // evaluates the setTurnNumber() call/
+                        // expression if the left side is false.
+                        //
                         () => turnNumber > 1 && setTurnNumber(turnNumber - 1)
                     }
                 >
