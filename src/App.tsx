@@ -21,6 +21,7 @@ import {
   , getLeaderboardData
   , getPreviousPlayers
   , getBadTurnData
+  , getAverageGameDurationByPlayerCount
 } from './foo-game-results';
 
 import { AppBar, Box, Toolbar, Typography } from '@mui/material';
@@ -111,6 +112,7 @@ const App = () => {
         leaderboard={ getLeaderboardData(gameResults) }
         setTitle={setTitle}
         badTurnData={ getBadTurnData(gameResults) }
+        avgGameDurationByPlayerCount={ getAverageGameDurationByPlayerCount(gameResults) }
       />,
     },
     {

@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
-import { BadTurnDisplay, GeneralFactsDisplay, LeaderboardEntry } from './foo-game-results';
+import { AvgGameDurationsByPlayerCountDisplay, BadTurnDisplay, GeneralFactsDisplay, LeaderboardEntry } from './foo-game-results';
 import { FC } from 'react';
 import { Typography, Paper, Table, TableBody, TableRow, TableCell, Box, TableHead } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
@@ -13,6 +13,7 @@ interface HomeProps {
     leaderboard: LeaderboardEntry[];
     setTitle: (t: string) => void;
     badTurnData: BadTurnDisplay[];
+    avgGameDurationByPlayerCount: AvgGameDurationsByPlayerCountDisplay[];
 }
 
 export const Home: FC<HomeProps> = ({
@@ -20,6 +21,7 @@ export const Home: FC<HomeProps> = ({
     , leaderboard
     , setTitle
     , badTurnData
+    , avgGameDurationByPlayerCount
 }) => {
 
     useEffect(
@@ -247,6 +249,59 @@ export const Home: FC<HomeProps> = ({
                                         >
                                             <TableCell>{x.name}</TableCell>
                                             <TableCell>{x.badTurnCount}</TableCell>
+                                        </TableRow>
+                                    ))
+                                }
+                            </TableBody>
+                        </Table>
+                    </Box>
+                </Paper>
+            </Grid>
+            <Grid
+                xs={12}
+                md={6}
+            >
+                <Paper
+                    elevation={3}
+                    sx={{
+                        overflow: 'hidden'
+                    }}
+                >
+                    <Typography
+                        sx={{
+                            fontSize: 20
+                            , ml: 2
+                            , mt: 1
+                        }}
+                        color='text.disabled'
+                    >
+                        GAME DURATIONS
+                    </Typography>
+                    <Box
+                        sx={{
+                            pl: 1
+                            , pr: 1
+                        }}
+                    >
+                        <Table
+                            sx={{
+                                mt: 0
+                            }}
+                        >
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>PLAYER COUNT</TableCell>
+                                    <TableCell>AVG GAME DURATION</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {
+                                    avgGameDurationByPlayerCount.map(x => (
+                                        <TableRow
+                                            key={x.playerCount}
+                                        >
+                                            <TableCell>{x.playerCount}</TableCell>
+                                            <TableCell>{x.avgGameDuration}</TableCell>
                                         </TableRow>
                                     ))
                                 }
