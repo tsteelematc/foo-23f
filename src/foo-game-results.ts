@@ -49,7 +49,7 @@ export interface BadTurnDisplay {
 
 export interface AvgGameDurationsByPlayerCountDisplay {
     playerCount: number;
-    avgDuration: string;
+    avgGameDuration: string;
 }
 
 export const getGeneralFacts = (
@@ -157,7 +157,7 @@ const getAverageGameDuration = (results: GameResult[]) => {
 
 };
 
-export const getAverageGameDurationByPlayerCount = (results: GameResult[]) => {
+export const getAverageGameDurationByPlayerCount = (results: GameResult[]): AvgGameDurationsByPlayerCountDisplay[] => {
 
     // Complex reduce to JS Map object, not object literal.
     // const resultsGroupedByPlayerCount = results.reduce(
@@ -181,8 +181,8 @@ export const getAverageGameDurationByPlayerCount = (results: GameResult[]) => {
 
     return [...resultsGroupedByPlayerCount].map(
         x => ({
-            playerCount: x[0]
-            , avgGameDuration: getAverageGameDuration(x[1]) / 1000 / 60 // minutes
+            playerCount: x[0] as number
+            , avgGameDuration: format(getAverageGameDuration(x[1]))
         })
     ).sort(
         (a, b) => a.playerCount - b.playerCount
