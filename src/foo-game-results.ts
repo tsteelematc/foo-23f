@@ -47,6 +47,11 @@ export interface BadTurnDisplay {
     badTurnCount: number;
 }
 
+export interface AvgGameDurationsByPlayerCountDisplay {
+    playerCount: number;
+    avgDuration: string;
+}
+
 export const getGeneralFacts = (
     results: GameResult[]
     , fromDateMilliseconds: number 
