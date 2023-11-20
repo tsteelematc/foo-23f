@@ -47,6 +47,11 @@ export interface BadTurnDisplay {
     badTurnCount: number;
 }
 
+export interface AvgGameDurationByPlayerCountDisplay {
+    playerCount: number;
+    duration: string;
+}
+
 export const getGeneralFacts = (
     results: GameResult[]
     , fromDateMilliseconds: number 
@@ -59,7 +64,7 @@ export const getGeneralFacts = (
 
     const gameDurationsInMilliseconds = results
         .filter(x => Date.parse(x.end) <= fromDateMilliseconds)
-        .map(x => Date.parse(x.end) - Date.parse(x.start))
+        .map(x => getGameDuration(x))
     ;
 
     return {
@@ -135,3 +140,53 @@ export const getBadTurnData = (results: GameResult[]): BadTurnDisplay[] => {
         (a, b) => b.badTurnCount - a.badTurnCount
     );
 }; 
+
+const getGameDuration = (result: GameResult) => Date.parse(result.end) - Date.parse(result.start);
+
+const getAverageGameDuration = (results: GameResult[]) => {
+
+    const sum = results.reduce(
+        (acc, x) => acc + getGameDuration(x)
+        , 0
+    );
+
+    return results.length > 0
+        ? sum / results.length
+        : 0
+    ;
+
+};
+
+export const getAverageGameDurationByPlayerCount =
+    (results: GameResult[]): AvgGameDurationByPlayerCountDisplay[] => {
+
+    // Complex reduce to JS Map object, not object literal.
+    // const resultsGroupedByPlayerCount = results.reduce(
+    //     (acc, x) => acc.set(
+    //         x.players.length
+    //         , [
+    //             ...(acc.get(x.players.length) ?? [])
+    //             , x
+    //         ]
+    //     )
+    //     , new Map<number, GameResult[]>()
+
+    //     // Map<T1, T2>
+    //     // Map<KEY_TYPE, VALUE_TYPE>
+    // );
+
+    const resultsGroupedByPlayerCount = (Map as any).groupBy(
+        results 
+        , (x: any) => x.players.length 
+        // , (x: any) => x.winner
+    );
+
+    return [...resultsGroupedByPlayerCount].map(
+        x => ({
+            playerCount: x[0] as number
+            , duration: format(getAverageGameDuration(x[1]))
+        })
+    ).sort(
+        (a, b) => a.playerCount - b.playerCount
+    );
+};
