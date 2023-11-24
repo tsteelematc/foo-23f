@@ -93,7 +93,7 @@ const dummyGameResults: GameResult[] = [
 const App = () => {
 
   const [num, setNum] = useState(1);
-  const [gameResults, setGameResults] = useState<GameResult[]>(dummyGameResults);
+  const [gameResults, setGameResults] = useState<GameResult[]>([]);
   const [title, setTitle] = useState<string>(appTitle);
   const [chosenPlayers, setChosenPlayers] = useState<string[]>([]);
 
