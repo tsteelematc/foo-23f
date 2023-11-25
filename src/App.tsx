@@ -24,8 +24,9 @@ import {
   , getAverageGameDurationByPlayerCount
 } from './foo-game-results';
 
-import { AppBar, Box, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
 import TableBarOutlined from '@mui/icons-material/TableBarOutlined';
+import { SettingsOutlined } from '@mui/icons-material';
 
 const dummyGameResults: GameResult[] = [
   {
@@ -168,10 +169,17 @@ const App = () => {
               color="primary"
               sx={{
                 opacity: 0.75 
+                , flexGrow: 1
+                , textAlign: 'left'
               }}
             >
               {title}
             </Typography>
+            <IconButton
+              size='small'
+            >
+              <SettingsOutlined />
+            </IconButton>
           </Toolbar>
         </AppBar>
       </Box>
