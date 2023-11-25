@@ -24,7 +24,7 @@ import {
   , getAverageGameDurationByPlayerCount
 } from './foo-game-results';
 
-import { AppBar, Box, Button, IconButton, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, IconButton, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material';
 import TableBarOutlined from '@mui/icons-material/TableBarOutlined';
 import { SettingsOutlined } from '@mui/icons-material';
 
@@ -98,6 +98,13 @@ const App = () => {
   const [title, setTitle] = useState<string>(appTitle);
   const [chosenPlayers, setChosenPlayers] = useState<string[]>([]);
 
+  // For settings...
+  const [settingsOpen, setSettingsOpen] = React.useState(false);
+  const theme = useTheme();
+  const fullScreenSettings = useMediaQuery(
+    theme.breakpoints.down('md')
+  );
+  
   const addNewGameResult = (newGameResult: GameResult) => setGameResults(
     [
       ...gameResults
