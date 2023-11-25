@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -27,6 +27,7 @@ import {
 import { AppBar, Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, TextField, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material';
 import TableBarOutlined from '@mui/icons-material/TableBarOutlined';
 import { SettingsOutlined } from '@mui/icons-material';
+import localForage from "localforage";
 
 const dummyGameResults: GameResult[] = [
   {
@@ -106,6 +107,27 @@ const App = () => {
   );
   const [emailAddress, setEmailAddress] = React.useState("");
   
+  useEffect(
+    () => {
+    
+      const loadEmail = async () => {
+        if(!ignore){
+            setEmailAddress(
+              await localForage.getItem('email') ?? ""
+            );
+          }
+      }
+
+      let ignore = false;
+      loadEmail();
+
+      return () => {
+        ignore = true;
+      }
+    }
+    , []
+  );
+
   const addNewGameResult = (newGameResult: GameResult) => setGameResults(
     [
       ...gameResults
@@ -240,7 +262,10 @@ const App = () => {
             size='large'
             autoFocus 
             onClick={
-              () => setSettingsOpen(false)
+              async () => {
+                await localForage.setItem('email', emailAddress);
+                setSettingsOpen(false);
+              }
             }>
             Save
           </Button>
