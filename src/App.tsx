@@ -24,7 +24,7 @@ import {
   , getAverageGameDurationByPlayerCount
 } from './foo-game-results';
 
-import { AppBar, Box, Button, IconButton, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { AppBar, Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material';
 import TableBarOutlined from '@mui/icons-material/TableBarOutlined';
 import { SettingsOutlined } from '@mui/icons-material';
 
@@ -184,6 +184,9 @@ const App = () => {
             </Typography>
             <IconButton
               size='small'
+              onClick={
+                () => setSettingsOpen(true)
+              }
             >
               <SettingsOutlined />
             </IconButton>
@@ -199,6 +202,34 @@ const App = () => {
       >
         <RouterProvider router={router} />
       </Box>
+      <Dialog
+        fullScreen={fullScreenSettings}
+        open={settingsOpen}
+        onClose={
+          () => setSettingsOpen(false)
+        }
+      >
+        <DialogTitle>
+          Settings
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Your email address will only be used to load/save game results. No 
+            spam, we promise : - )
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button 
+            variant='contained'
+            size='large'
+            autoFocus 
+            onClick={
+              () => setSettingsOpen(false)
+            }>
+            Save
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };
