@@ -24,7 +24,7 @@ import {
   , getAverageGameDurationByPlayerCount
 } from './foo-game-results';
 
-import { AppBar, Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { AppBar, Box, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, TextField, Toolbar, Typography, useMediaQuery, useTheme } from '@mui/material';
 import TableBarOutlined from '@mui/icons-material/TableBarOutlined';
 import { SettingsOutlined } from '@mui/icons-material';
 
@@ -104,6 +104,7 @@ const App = () => {
   const fullScreenSettings = useMediaQuery(
     theme.breakpoints.down('md')
   );
+  const [emailAddress, setEmailAddress] = React.useState("");
   
   const addNewGameResult = (newGameResult: GameResult) => setGameResults(
     [
@@ -220,10 +221,22 @@ const App = () => {
             Your email address will only be used to load/save game results. No 
             spam, we promise : - )
           </DialogContentText>
+          <TextField 
+              label="Enter your email address"
+              variant="outlined"
+              fullWidth
+              value={emailAddress}
+              onChange={
+                  (e) => setEmailAddress(e.target.value)
+              }
+              sx={{
+                mt: 3
+              }}
+          />          
         </DialogContent>
         <DialogActions>
           <Button 
-            variant='contained'
+            variant={emailAddress.length > 0 ? 'contained' : 'outlined'}
             size='large'
             autoFocus 
             onClick={
