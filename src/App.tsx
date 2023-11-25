@@ -182,14 +182,17 @@ const App = () => {
             >
               {title}
             </Typography>
-            <IconButton
-              size='small'
-              onClick={
-                () => setSettingsOpen(true)
-              }
-            >
-              <SettingsOutlined />
-            </IconButton>
+            {
+              title == appTitle &&
+              <IconButton
+                size='small'
+                onClick={
+                  () => setSettingsOpen(true)
+                }
+              >
+                <SettingsOutlined />
+              </IconButton>
+            }
           </Toolbar>
         </AppBar>
       </Box>
