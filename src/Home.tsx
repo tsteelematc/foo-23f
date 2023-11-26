@@ -68,6 +68,7 @@ export const Home: FC<HomeProps> = ({
                     elevation={3}
                     sx={{
                         overflow: 'hidden'
+                        , height: '100%'
                     }}
                 >
                     <Typography
@@ -167,6 +168,7 @@ export const Home: FC<HomeProps> = ({
                     elevation={3}
                     sx={{
                         overflow: 'hidden'
+                        , height: '100%'
                     }}
                 >
                     <Typography
@@ -224,6 +226,7 @@ export const Home: FC<HomeProps> = ({
                     elevation={3}
                     sx={{
                         overflow: 'hidden'
+                        , height: '100%'
                     }}
                 >
                     <Typography
@@ -277,6 +280,7 @@ export const Home: FC<HomeProps> = ({
                     elevation={3}
                     sx={{
                         overflow: 'hidden'
+                        , height: '100%'
                     }}
                 >
                     <Typography
