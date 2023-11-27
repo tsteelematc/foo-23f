@@ -27,73 +27,10 @@ import {
 import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 import TableBarOutlined from '@mui/icons-material/TableBarOutlined';
 
-const dummyGameResults: GameResult[] = [
-  {
-      winner: "Larry"
-      ,players: [
-          {
-              name: "Larry"
-              , turns: [
-                  { num: 1, status: "Meh"}
-                  , { num: 2, status: "Thumbs Up"}
-                  , { num: 3, status: "Thumbs Up"}
-              ]
-          }
-          , {
-              name: "Curly"
-              , turns: [
-                  { num: 1, status: "Meh"}
-                  , { num: 2, status: "Meh"}
-              ]
-          }
-          , {
-              name: "Moe"
-              , turns: [
-                  { num: 1, status: "Thumbs Down"}
-                  , { num: 2, status: "Meh"}
-              ]
-          }
-      ]
-
-      , start: "2023-10-01T17:40:46.333Z"
-      , end: "2023-10-01T17:53:27.123Z"
-  }
-  , {
-      winner: "Larry"
-      ,players: [
-          {
-              name: "Larry"
-              , turns: [
-                  { num: 1, status: "Meh"}
-                  , { num: 2, status: "Thumbs Up"}
-                  , { num: 3, status: "Thumbs Up"}
-              ]
-          }
-          , {
-              name: "Curly"
-              , turns: [
-                  { num: 1, status: "Meh"}
-                  , { num: 2, status: "Meh"}
-              ]
-          }
-          , {
-              name: "Moe"
-              , turns: [
-                  { num: 1, status: "Thumbs Down"}
-                  , { num: 2, status: "Meh"}
-              ]
-          }
-      ]
-
-      , start: "2023-10-01T17:40:46.333Z"
-      , end: "2023-10-01T17:53:27.123Z"
-  }
-];
-
 const App = () => {
 
   const [num, setNum] = useState(1);
-  const [gameResults, setGameResults] = useState<GameResult[]>(dummyGameResults);
+  const [gameResults, setGameResults] = useState<GameResult[]>([]);
   const [title, setTitle] = useState<string>(appTitle);
   const [chosenPlayers, setChosenPlayers] = useState<string[]>([]);
 

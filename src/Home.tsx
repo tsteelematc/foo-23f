@@ -68,6 +68,7 @@ export const Home: FC<HomeProps> = ({
                     elevation={3}
                     sx={{
                         overflow: 'hidden'
+                        , height: '100%'
                     }}
                 >
                     <Typography
@@ -111,7 +112,11 @@ export const Home: FC<HomeProps> = ({
                                         Last Played
                                     </TableCell>
                                     <TableCell>
-                                        {generalFacts.lastPlayed} ago
+                                        {
+                                            generalFacts.totalGames > 0 
+                                                ? `${generalFacts.lastPlayed} ago`
+                                                : ''
+                                        }
                                     </TableCell>
                                 </TableRow> 
                                 <TableRow
@@ -125,7 +130,11 @@ export const Home: FC<HomeProps> = ({
                                         Shortest Game
                                     </TableCell>
                                     <TableCell>
-                                        {generalFacts.shortestGame}
+                                        {
+                                            generalFacts.totalGames > 0
+                                                ? generalFacts.shortestGame
+                                                : ''
+                                        }
                                     </TableCell>
                                 </TableRow> 
                                 <TableRow
@@ -139,7 +148,11 @@ export const Home: FC<HomeProps> = ({
                                         Longest Game
                                     </TableCell>
                                     <TableCell>
-                                        {generalFacts.longestGame}
+                                        {
+                                            generalFacts.totalGames > 0
+                                                ? generalFacts.longestGame
+                                                : ''
+                                        }
                                     </TableCell>
                                 </TableRow> 
                             </TableBody>
@@ -155,6 +168,7 @@ export const Home: FC<HomeProps> = ({
                     elevation={3}
                     sx={{
                         overflow: 'hidden'
+                        , height: '100%'
                     }}
                 >
                     <Typography
@@ -212,6 +226,7 @@ export const Home: FC<HomeProps> = ({
                     elevation={3}
                     sx={{
                         overflow: 'hidden'
+                        , height: '100%'
                     }}
                 >
                     <Typography
@@ -265,6 +280,7 @@ export const Home: FC<HomeProps> = ({
                     elevation={3}
                     sx={{
                         overflow: 'hidden'
+                        , height: '100%'
                     }}
                 >
                     <Typography
