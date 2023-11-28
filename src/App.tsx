@@ -29,6 +29,7 @@ import TableBarOutlined from '@mui/icons-material/TableBarOutlined';
 import { SettingsOutlined } from '@mui/icons-material';
 
 import localForage from 'localforage';
+import { loadGamesFromCloud, saveGameToCloud } from './tca-cloud-api';
 
 const App = () => {
 
@@ -41,35 +42,63 @@ const App = () => {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
-  const [emailAddress, setEmailAddress] = React.useState("");
+  const [emailAddressOnDialog, setEmailAddressOnDialog] = React.useState("");
+  const [savedEmailAddress, setSavedEmailAddress] = React.useState("");
 
   useEffect(
     () => {
     
-      const loadEmail = async () => {
-        if(!ignore){
-            setEmailAddress(
-              await localForage.getItem('email') ?? ""
+      const init = async () => {
+        
+        if(!ignore) {
+          
+          const email = await localForage.getItem<string>('email') ?? "";
+
+          if (email.length > 0) {
+
+            setEmailAddressOnDialog(email);
+            setSavedEmailAddress(email);
+
+            const cloudGameResults = await loadGamesFromCloud(
+              email
+              , 'tca-foo-23f'
             );
+
+            setGameResults(cloudGameResults);
           }
+        }
       }
 
       let ignore = false;
-      loadEmail();
+      init();
 
       return () => {
         ignore = true;
       }
     }
-    , []
+    , [savedEmailAddress]
   );
 
-  const addNewGameResult = (newGameResult: GameResult) => setGameResults(
-    [
-      ...gameResults
-      , newGameResult
-    ]
-  );
+  const addNewGameResult = async (newGameResult: GameResult) => {
+
+    // If we have an email, save the game to the cloud...
+    if (savedEmailAddress.length > 0) {
+      await saveGameToCloud(
+        savedEmailAddress
+        , 'tca-foo-23f'
+        , newGameResult.end // new Date().toISOString()
+        , newGameResult
+      );
+    }
+
+    // Optimistally update the shared state...
+    setGameResults(
+      [
+        ...gameResults
+        , newGameResult
+      ]
+    );
+  }
 
   const router = createHashRouter([
     {
@@ -180,9 +209,9 @@ const App = () => {
               label="Enter your email address"
               variant="outlined"
               fullWidth
-              value={emailAddress}
+              value={emailAddressOnDialog}
               onChange={
-                  (e) => setEmailAddress(e.target.value)
+                  (e) => setEmailAddressOnDialog(e.target.value)
               }
               sx={{
                 mt: 3
@@ -191,10 +220,11 @@ const App = () => {
         </DialogContent>
         <DialogActions>
           <Button
-            variant={emailAddress.length > 0 ? 'contained' : 'outlined'} 
+            variant={emailAddressOnDialog.length > 0 ? 'contained' : 'outlined'} 
             onClick={
               async () => {
-                await localForage.setItem('email', emailAddress);
+                await localForage.setItem('email', emailAddressOnDialog);
+                setSavedEmailAddress(emailAddressOnDialog);
                 setSettingsOpen(false);
               }
             } 
