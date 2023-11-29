@@ -43,7 +43,7 @@ const App = () => {
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
   const [emailAddressOnDialog, setEmailAddressOnDialog] = React.useState("");
-  const [savedEmailAddress, setSavedEmailAddress] = React.useState("");
+  const [emailAddressUpdatedCount, setEmailAddressUpdatedCount] = React.useState(0);
 
   useEffect(
     () => {
@@ -57,7 +57,6 @@ const App = () => {
           if (email.length > 0) {
 
             setEmailAddressOnDialog(email);
-            // setSavedEmailAddress(email);
 
             const cloudGameResults = await loadGamesFromCloud(
               email
@@ -76,22 +75,22 @@ const App = () => {
         ignore = true;
       }
     }
-    , [savedEmailAddress]
+    , [emailAddressUpdatedCount]
   );
 
   const addNewGameResult = async (newGameResult: GameResult) => {
 
     // If we have an email, save the game to the cloud...
-    if (savedEmailAddress.length > 0) {
+    if (emailAddressOnDialog.length > 0) {
       await saveGameToCloud(
-        savedEmailAddress
+        emailAddressOnDialog
         , 'tca-foo-23f'
         , newGameResult.end // new Date().toISOString()
         , newGameResult
       );
     }
 
-    // Optimistally update the shared state...
+    // Optimistally update the lifted app state...
     setGameResults(
       [
         ...gameResults
@@ -224,7 +223,7 @@ const App = () => {
             onClick={
               async () => {
                 await localForage.setItem('email', emailAddressOnDialog);
-                setSavedEmailAddress(emailAddressOnDialog);
+                setEmailAddressUpdatedCount(emailAddressUpdatedCount + 1);
                 setSettingsOpen(false);
               }
             } 
