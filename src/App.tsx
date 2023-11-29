@@ -29,6 +29,7 @@ import TableBarOutlined from '@mui/icons-material/TableBarOutlined';
 import { SettingsOutlined } from '@mui/icons-material';
 
 import localForage from 'localforage';
+import { saveGameToCloud } from './tca-cloud-api';
 
 const App = () => {
 
@@ -68,12 +69,26 @@ const App = () => {
     , []
   );
 
-  const addNewGameResult = (newGameResult: GameResult) => setGameResults(
-    [
-      ...gameResults
-      , newGameResult
-    ]
-  );
+  const addNewGameResult = async (newGameResult: GameResult) => {
+
+    // If we have an email address, save the game result to the cloud...
+    if (emailAddress.length > 0) {
+      await saveGameToCloud(
+        emailAddress
+        , 'tca-foo-fall-2023'
+        , newGameResult.end // new Date().toISOString()
+        , newGameResult
+      );
+    }
+
+    // Optimitically update the lifted state...
+    setGameResults(
+      [
+        ...gameResults
+        , newGameResult
+      ]
+    );
+  }
 
   const router = createHashRouter([
     {
