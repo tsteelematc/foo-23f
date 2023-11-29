@@ -57,7 +57,7 @@ const App = () => {
           if (email.length > 0) {
 
             setEmailAddressOnDialog(email);
-            setSavedEmailAddress(email);
+            // setSavedEmailAddress(email);
 
             const cloudGameResults = await loadGamesFromCloud(
               email
