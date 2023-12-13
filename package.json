@@ -1,7 +1,7 @@
 {
   "name": "foo",
   "version": "0.1.0",
-  "homepage": "https://2023-fall-adv-fe.github.io/foo",
+  "homepage": "https://tsteelematc.github.io/foo-23f",
   "private": true,
   "dependencies": {
     "@aws-sdk/util-dynamodb": "^3.461.0",
